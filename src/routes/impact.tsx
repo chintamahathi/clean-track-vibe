@@ -118,8 +118,8 @@ function Impact() {
         <div className="mt-4 space-y-3">
           {(
             [
-              { label: "Missed pickups", last: colonyProgressCompare.lastMonth.missed, now: colonyProgressCompare.thisMonth.missed },
-              { label: "Overflow incidents", last: colonyProgressCompare.lastMonth.overflow, now: colonyProgressCompare.thisMonth.overflow },
+              { label: "Missed pickups", last: colonyProgressCompare.lastMonth.missed, now: colonyProgressCompare.thisMonth.missed, suffix: "" },
+              { label: "Overflow incidents", last: colonyProgressCompare.lastMonth.overflow, now: colonyProgressCompare.thisMonth.overflow, suffix: "" },
               { label: "Reliability", last: colonyProgressCompare.lastMonth.reliability, now: colonyProgressCompare.thisMonth.reliability, suffix: "%" },
             ] as const
           ).map((row) => (

@@ -122,7 +122,6 @@ function PickupForm() {
         </p>
         <div className="mx-auto mt-6 max-w-60 text-left">
           <StepTimeline
-            tone="light"
             steps={[
               { label: "Request submitted", time: "Just now", state: "done" },
               { label: "Vehicle assigned", time: "SAT-220 on the way", state: "done" },
