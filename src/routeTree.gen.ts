@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AddressesRouteImport } from './routes/addresses'
+import { Route as BillsRouteImport } from './routes/bills'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as ComplaintsRouteImport } from './routes/complaints'
 import { Route as HistoryRouteImport } from './routes/history'
@@ -24,6 +25,7 @@ import { Route as PointsRouteImport } from './routes/points'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RequestsRouteImport } from './routes/requests'
 import { Route as RoleSelectRouteImport } from './routes/role-select'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SplashRouteImport } from './routes/splash'
 import { Route as TrackRouteImport } from './routes/track'
 import { Route as DriverIndexRouteImport } from './routes/driver/index'
@@ -51,6 +53,11 @@ const IndexRoute = IndexRouteImport.update({
 const AddressesRoute = AddressesRouteImport.update({
   id: '/addresses',
   path: '/addresses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BillsRoute = BillsRouteImport.update({
+  id: '/bills',
+  path: '/bills',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalendarRoute = CalendarRouteImport.update({
@@ -116,6 +123,11 @@ const RequestsRoute = RequestsRouteImport.update({
 const RoleSelectRoute = RoleSelectRouteImport.update({
   id: '/role-select',
   path: '/role-select',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplashRoute = SplashRouteImport.update({
@@ -212,6 +224,7 @@ const MunicipalRoutesRoute = MunicipalRoutesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/addresses': typeof AddressesRoute
+  '/bills': typeof BillsRoute
   '/calendar': typeof CalendarRoute
   '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
@@ -225,6 +238,7 @@ export interface FileRoutesByFullPath {
   '/profile': typeof ProfileRoute
   '/requests': typeof RequestsRoute
   '/role-select': typeof RoleSelectRoute
+  '/settings': typeof SettingsRoute
   '/splash': typeof SplashRoute
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
@@ -247,6 +261,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/addresses': typeof AddressesRoute
+  '/bills': typeof BillsRoute
   '/calendar': typeof CalendarRoute
   '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
@@ -260,6 +275,7 @@ export interface FileRoutesByTo {
   '/profile': typeof ProfileRoute
   '/requests': typeof RequestsRoute
   '/role-select': typeof RoleSelectRoute
+  '/settings': typeof SettingsRoute
   '/splash': typeof SplashRoute
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
@@ -283,6 +299,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/addresses': typeof AddressesRoute
+  '/bills': typeof BillsRoute
   '/calendar': typeof CalendarRoute
   '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
@@ -296,6 +313,7 @@ export interface FileRoutesById {
   '/profile': typeof ProfileRoute
   '/requests': typeof RequestsRoute
   '/role-select': typeof RoleSelectRoute
+  '/settings': typeof SettingsRoute
   '/splash': typeof SplashRoute
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
@@ -320,6 +338,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/addresses'
+    | '/bills'
     | '/calendar'
     | '/complaints'
     | '/history'
@@ -333,6 +352,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/requests'
     | '/role-select'
+    | '/settings'
     | '/splash'
     | '/track'
     | '/driver/history'
@@ -355,6 +375,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/addresses'
+    | '/bills'
     | '/calendar'
     | '/complaints'
     | '/history'
@@ -368,6 +389,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/requests'
     | '/role-select'
+    | '/settings'
     | '/splash'
     | '/track'
     | '/driver/history'
@@ -390,6 +412,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/addresses'
+    | '/bills'
     | '/calendar'
     | '/complaints'
     | '/history'
@@ -403,6 +426,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/requests'
     | '/role-select'
+    | '/settings'
     | '/splash'
     | '/track'
     | '/driver/history'
@@ -426,6 +450,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AddressesRoute: typeof AddressesRoute
+  BillsRoute: typeof BillsRoute
   CalendarRoute: typeof CalendarRoute
   ComplaintsRoute: typeof ComplaintsRoute
   HistoryRoute: typeof HistoryRoute
@@ -439,6 +464,7 @@ export interface RootRouteChildren {
   ProfileRoute: typeof ProfileRoute
   RequestsRoute: typeof RequestsRoute
   RoleSelectRoute: typeof RoleSelectRoute
+  SettingsRoute: typeof SettingsRoute
   SplashRoute: typeof SplashRoute
   TrackRoute: typeof TrackRoute
   DriverHistoryRoute: typeof DriverHistoryRoute
@@ -473,6 +499,13 @@ declare module '@tanstack/react-router' {
       path: '/addresses'
       fullPath: '/addresses'
       preLoaderRoute: typeof AddressesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bills': {
+      id: '/bills'
+      path: '/bills'
+      fullPath: '/bills'
+      preLoaderRoute: typeof BillsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calendar': {
@@ -564,6 +597,13 @@ declare module '@tanstack/react-router' {
       path: '/role-select'
       fullPath: '/role-select'
       preLoaderRoute: typeof RoleSelectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/splash': {
@@ -698,6 +738,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AddressesRoute: AddressesRoute,
+  BillsRoute: BillsRoute,
   CalendarRoute: CalendarRoute,
   ComplaintsRoute: ComplaintsRoute,
   HistoryRoute: HistoryRoute,
@@ -711,6 +752,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileRoute: ProfileRoute,
   RequestsRoute: RequestsRoute,
   RoleSelectRoute: RoleSelectRoute,
+  SettingsRoute: SettingsRoute,
   SplashRoute: SplashRoute,
   TrackRoute: TrackRoute,
   DriverHistoryRoute: DriverHistoryRoute,

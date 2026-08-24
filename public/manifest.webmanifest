@@ -1,0 +1,17 @@
+{
+  "name": "CleanTrack — Smart Waste Collection",
+  "short_name": "CleanTrack",
+  "description": "Smart garbage collection tracking for cleaner streets.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#063B2A",
+  "background_color": "#F7F4EA",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any maskable" },
+    { "src": "/favicon.ico", "type": "image/x-icon", "sizes": "32x32 16x16" },
+    { "src": "/apple-touch-icon.svg", "type": "image/svg+xml", "sizes": "180x180" }
+  ],
+  "categories": ["utilities", "productivity"],
+  "lang": "en"
+}

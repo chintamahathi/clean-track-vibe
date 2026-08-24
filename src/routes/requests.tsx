@@ -16,6 +16,45 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
+
+// ─── One pickup per day enforcement ──────────────────────────────────────────
+const TODAY_KEY = "ct_pickup_requested_date";
+const TODAY_ISO = new Date().toISOString().slice(0, 10);
+
+type TodayRequest = { date: string; status: "requested" | "assigned" | "dispatched" | "completed" };
+
+function getTodayRequest(): TodayRequest | null {
+  try {
+    const raw = window.localStorage.getItem(TODAY_KEY);
+    if (!raw) return null;
+    const parsed: TodayRequest = JSON.parse(raw);
+    return parsed.date === TODAY_ISO ? parsed : null;
+  } catch { return null; }
+}
+
+function saveTodayRequest() {
+  localStorage.setItem(TODAY_KEY, JSON.stringify({ date: TODAY_ISO, status: "requested" } satisfies TodayRequest));
+}
+
+const STATUS_LABEL_MAP: Record<TodayRequest["status"], string> = {
+  requested: "REQUESTED", assigned: "ASSIGNED", dispatched: "DISPATCHED", completed: "COMPLETED",
+};
+
+function AlreadyRequestedBanner({ status }: { status: TodayRequest["status"] }) {
+  return (
+    <div className="animate-sheet-up mt-5 rounded-[2rem] bg-pale p-7 text-center shadow-card">
+      <span className="mx-auto flex size-14 items-center justify-center rounded-full bg-amber-soft text-[oklch(0.6_0.13_70)]">
+        <CheckCircle2 className="size-7" strokeWidth={2.2} />
+      </span>
+      <h2 className="mt-4 text-lg font-extrabold tracking-tight text-forest">PICKUP ALREADY REQUESTED</h2>
+      <p className="mx-auto mt-2 max-w-[28ch] text-sm leading-relaxed text-muted-foreground">You already have a pickup request for today.</p>
+      <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-xs font-extrabold tracking-[0.12em] text-ivory">
+        <span className="size-2 rounded-full bg-lime" />{STATUS_LABEL_MAP[status]}
+      </div>
+      <p className="mt-4 text-[11px] text-muted-foreground">Your request is being processed. You'll receive a notification when confirmed.</p>
+    </div>
+  );
+}
 import { AttachMedia } from "@/components/cleantrack/attach";
 import { CityMap, HOME_POS, MapContainer } from "@/components/cleantrack/map";
 import { StepTimeline } from "@/components/cleantrack/timeline";
@@ -111,6 +150,9 @@ function PickupForm() {
   const [waste, setWaste] = useState("household");
   const [slot, setSlot] = useState(timeSlots[0]);
   const [done, setDone] = useState(false);
+
+  const existingRequest = getTodayRequest();
+  if (existingRequest) return <AlreadyRequestedBanner status={existingRequest.status} />;
 
   if (done) {
     return (
@@ -214,7 +256,7 @@ function PickupForm() {
 
       <button
         type="button"
-        onClick={() => setDone(true)}
+        onClick={() => { saveTodayRequest(); setDone(true); }}
         className="flex w-full items-center justify-center gap-2 rounded-2xl bg-forest py-4 text-sm font-extrabold tracking-[0.06em] text-ivory shadow-lift transition-transform hover:scale-[1.01] active:scale-[0.98]"
       >
         REQUEST PICKUP <ArrowRight className="size-4" strokeWidth={2.6} />

@@ -1,15 +1,21 @@
 import { useRouter } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 
-/** Back-button header for secondary screens. */
+/**
+ * Back-button header for secondary screens.
+ * Pass `onBack` to override router.history.back() — useful for in-page
+ * navigation like Settings sub-sections.
+ */
 export function SubHeader({
   title,
   subtitle,
   dark = false,
+  onBack,
 }: {
   title: string;
   subtitle?: string;
   dark?: boolean;
+  onBack?: () => void;
 }) {
   const router = useRouter();
   return (
@@ -17,7 +23,7 @@ export function SubHeader({
       <button
         type="button"
         aria-label="Go back"
-        onClick={() => router.history.back()}
+        onClick={() => (onBack ? onBack() : router.history.back())}
         className={`flex size-11 shrink-0 items-center justify-center rounded-full transition-transform hover:scale-105 active:scale-95 ${
           dark ? "glass-panel-dark text-ivory" : "bg-card text-forest shadow-card"
         }`}
