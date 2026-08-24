@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Calendar, Camera, CheckCircle2, Clock4, HelpCircle, MapPin, Plus, TriangleAlert, Truck, Wrench } from "lucide-react";
+import { ArrowRight, Calendar, Camera, CheckCircle2, Clock4, MapPin, Plus, TriangleAlert, Truck } from "lucide-react";
 import { useState } from "react";
-import { AttachMedia } from "@/components/cleantrack/attach";
 import { StepTimeline } from "@/components/cleantrack/timeline";
 import { StatusPill } from "@/components/cleantrack/status-pill";
 import { SubHeader } from "@/components/cleantrack/sub-header";
@@ -33,6 +32,7 @@ type MissedOptionId = (typeof MISSED_OPTIONS)[number]["id"];
 
 function NewComplaintFlow({ onDone }: { onDone: () => void }) {
   const [reason, setReason] = useState<MissedOptionId | null>(null);
+  const [description, setDescription] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   if (submitted) {
@@ -62,9 +62,15 @@ function NewComplaintFlow({ onDone }: { onDone: () => void }) {
           </button>
         );
       })}
+      {/* Description — saved with the report to the backend */}
       <div className="pt-1">
-        <p className="mb-2 text-[10px] font-extrabold tracking-[0.16em] text-forest/50">ADD EVIDENCE (OPTIONAL)</p>
-        <AttachMedia />
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Describe what happened..."
+          rows={3}
+          className="w-full resize-none rounded-2xl bg-card px-4 py-3 text-sm font-medium text-forest placeholder:text-muted-foreground shadow-card ring-1 ring-forest/8 focus:outline-none focus:ring-2 focus:ring-emerald/40"
+        />
       </div>
       <button type="button" disabled={!reason} onClick={() => setSubmitted(true)}
         className="flex w-full items-center justify-center gap-2 rounded-2xl bg-forest py-4 text-sm font-extrabold tracking-[0.06em] text-ivory shadow-lift transition-all enabled:hover:scale-[1.01] enabled:active:scale-[0.98] disabled:opacity-40">
