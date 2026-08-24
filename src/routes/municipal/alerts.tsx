@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Brain } from "lucide-react";
 import { CountUp } from "@/components/cleantrack/count-up";
 import { ProgressRing } from "@/components/cleantrack/progress-ring";
-import { alerts, overflowPoint, routeMonitor, smartAlerts } from "@/lib/data";
+import { alerts, overflowPoint, routeMonitor } from "@/lib/data";
 
 export const Route = createFileRoute("/municipal/alerts")({
   head: () => ({
@@ -64,10 +64,10 @@ function MunicipalAlerts() {
             <span className="text-[10px] font-semibold text-ivory/40">just now</span>
           </div>
           <p className="mt-2 text-lg font-extrabold tracking-tight text-ivory">
-            {smartAlerts.delay.vehicle} · {smartAlerts.delay.likelyCause}
+            {routeMonitor.vehicle} · Traffic congestion
           </p>
           <p className="mt-0.5 text-xs text-ivory/55">
-            Suggested reroute via <span className="font-bold text-lime">{smartAlerts.delay.suggestedReroute}</span> · est. +4 min
+            Suggested reroute via <span className="font-bold text-lime">Lane 6 → Main Road</span> · est. +4 min
           </p>
           <Link
             to="/municipal/insights"
@@ -83,10 +83,10 @@ function MunicipalAlerts() {
             </p>
             <span className="text-[10px] font-semibold text-ivory/40">forecast</span>
           </div>
-          <p className="mt-2 text-lg font-extrabold tracking-tight text-ivory">{routeMonitor.name}</p>
+          <p className="mt-2 text-lg font-extrabold tracking-tight text-ivory">Madhapur Route · {routeMonitor.vehicle}</p>
           <p className="mt-0.5 text-xs text-ivory/55">
-            {smartAlerts.prediction.text} · probability{" "}
-            <span className="font-bold text-cyan">{smartAlerts.prediction.probability}%</span>
+            15 min delay likely due to traffic + high waste volume · probability{" "}
+            <span className="font-bold text-cyan">78%</span>
           </p>
           <Link
             to="/municipal/monitor"
@@ -118,7 +118,7 @@ function MunicipalAlerts() {
             {overflowPoint.currentKg} <span className="font-medium text-ivory/45">/ {overflowPoint.capacityKg} KG</span>
           </p>
           <p className="mt-1 text-[11px] font-bold text-amber">
-            🧠 Prediction: overflow in {smartAlerts.prediction.overflowInMin} min · +2.1 kg/min
+            🧠 Prediction: overflow in 26 min · +2.1 kg/min
           </p>
           <button
             type="button"
