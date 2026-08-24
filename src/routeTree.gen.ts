@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DriverRouteRouteImport } from './routes/driver/route'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
@@ -19,6 +18,7 @@ import { Route as TrackRouteImport } from './routes/track'
 import { Route as DriverIndexRouteImport } from './routes/driver/index'
 import { Route as DriverHistoryRouteImport } from './routes/driver/history'
 import { Route as DriverIssuesRouteImport } from './routes/driver/issues'
+import { Route as DriverMapRouteImport } from './routes/driver/map'
 import { Route as MunicipalIndexRouteImport } from './routes/municipal/index'
 import { Route as MunicipalAlertsRouteImport } from './routes/municipal/alerts'
 import { Route as MunicipalAnalyticsRouteImport } from './routes/municipal/analytics'
@@ -28,11 +28,6 @@ import { Route as MunicipalRoutesRouteImport } from './routes/municipal/routes'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DriverRouteRoute = DriverRouteRouteImport.update({
-  id: '/driver',
-  path: '/driver',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HistoryRoute = HistoryRouteImport.update({
@@ -61,19 +56,24 @@ const TrackRoute = TrackRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const DriverIndexRoute = DriverIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => DriverRouteRoute,
+  id: '/driver/',
+  path: '/driver/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const DriverHistoryRoute = DriverHistoryRouteImport.update({
-  id: '/history',
-  path: '/history',
-  getParentRoute: () => DriverRouteRoute,
+  id: '/driver/history',
+  path: '/driver/history',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const DriverIssuesRoute = DriverIssuesRouteImport.update({
-  id: '/issues',
-  path: '/issues',
-  getParentRoute: () => DriverRouteRoute,
+  id: '/driver/issues',
+  path: '/driver/issues',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriverMapRoute = DriverMapRouteImport.update({
+  id: '/driver/map',
+  path: '/driver/map',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const MunicipalIndexRoute = MunicipalIndexRouteImport.update({
   id: '/municipal/',
@@ -103,7 +103,6 @@ const MunicipalRoutesRoute = MunicipalRoutesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/driver': typeof DriverRouteRouteWithChildren
   '/history': typeof HistoryRoute
   '/impact': typeof ImpactRoute
   '/onboarding': typeof OnboardingRoute
@@ -111,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
   '/driver/issues': typeof DriverIssuesRoute
+  '/driver/map': typeof DriverMapRoute
   '/municipal/alerts': typeof MunicipalAlertsRoute
   '/municipal/analytics': typeof MunicipalAnalyticsRoute
   '/municipal/map': typeof MunicipalMapRoute
@@ -127,6 +127,7 @@ export interface FileRoutesByTo {
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
   '/driver/issues': typeof DriverIssuesRoute
+  '/driver/map': typeof DriverMapRoute
   '/municipal/alerts': typeof MunicipalAlertsRoute
   '/municipal/analytics': typeof MunicipalAnalyticsRoute
   '/municipal/map': typeof MunicipalMapRoute
@@ -137,7 +138,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/driver': typeof DriverRouteRouteWithChildren
   '/history': typeof HistoryRoute
   '/impact': typeof ImpactRoute
   '/onboarding': typeof OnboardingRoute
@@ -145,6 +145,7 @@ export interface FileRoutesById {
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
   '/driver/issues': typeof DriverIssuesRoute
+  '/driver/map': typeof DriverMapRoute
   '/municipal/alerts': typeof MunicipalAlertsRoute
   '/municipal/analytics': typeof MunicipalAnalyticsRoute
   '/municipal/map': typeof MunicipalMapRoute
@@ -156,7 +157,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/driver'
     | '/history'
     | '/impact'
     | '/onboarding'
@@ -164,6 +164,7 @@ export interface FileRouteTypes {
     | '/track'
     | '/driver/history'
     | '/driver/issues'
+    | '/driver/map'
     | '/municipal/alerts'
     | '/municipal/analytics'
     | '/municipal/map'
@@ -180,6 +181,7 @@ export interface FileRouteTypes {
     | '/track'
     | '/driver/history'
     | '/driver/issues'
+    | '/driver/map'
     | '/municipal/alerts'
     | '/municipal/analytics'
     | '/municipal/map'
@@ -189,7 +191,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/driver'
     | '/history'
     | '/impact'
     | '/onboarding'
@@ -197,6 +198,7 @@ export interface FileRouteTypes {
     | '/track'
     | '/driver/history'
     | '/driver/issues'
+    | '/driver/map'
     | '/municipal/alerts'
     | '/municipal/analytics'
     | '/municipal/map'
@@ -207,16 +209,19 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DriverRouteRoute: typeof DriverRouteRouteWithChildren
   HistoryRoute: typeof HistoryRoute
   ImpactRoute: typeof ImpactRoute
   OnboardingRoute: typeof OnboardingRoute
   RequestsRoute: typeof RequestsRoute
   TrackRoute: typeof TrackRoute
+  DriverHistoryRoute: typeof DriverHistoryRoute
+  DriverIssuesRoute: typeof DriverIssuesRoute
+  DriverMapRoute: typeof DriverMapRoute
   MunicipalAlertsRoute: typeof MunicipalAlertsRoute
   MunicipalAnalyticsRoute: typeof MunicipalAnalyticsRoute
   MunicipalMapRoute: typeof MunicipalMapRoute
   MunicipalRoutesRoute: typeof MunicipalRoutesRoute
+  DriverIndexRoute: typeof DriverIndexRoute
   MunicipalIndexRoute: typeof MunicipalIndexRoute
 }
 
@@ -227,13 +232,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/driver': {
-      id: '/driver'
-      path: '/driver'
-      fullPath: '/driver'
-      preLoaderRoute: typeof DriverRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/history': {
@@ -273,24 +271,31 @@ declare module '@tanstack/react-router' {
     }
     '/driver/': {
       id: '/driver/'
-      path: '/'
+      path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
-      parentRoute: typeof DriverRouteRoute
+      parentRoute: typeof rootRouteImport
     }
     '/driver/history': {
       id: '/driver/history'
-      path: '/history'
+      path: '/driver/history'
       fullPath: '/driver/history'
       preLoaderRoute: typeof DriverHistoryRouteImport
-      parentRoute: typeof DriverRouteRoute
+      parentRoute: typeof rootRouteImport
     }
     '/driver/issues': {
       id: '/driver/issues'
-      path: '/issues'
+      path: '/driver/issues'
       fullPath: '/driver/issues'
       preLoaderRoute: typeof DriverIssuesRouteImport
-      parentRoute: typeof DriverRouteRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/driver/map': {
+      id: '/driver/map'
+      path: '/driver/map'
+      fullPath: '/driver/map'
+      preLoaderRoute: typeof DriverMapRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/municipal/': {
       id: '/municipal/'
@@ -330,34 +335,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface DriverRouteRouteChildren {
-  DriverHistoryRoute: typeof DriverHistoryRoute
-  DriverIssuesRoute: typeof DriverIssuesRoute
-  DriverIndexRoute: typeof DriverIndexRoute
-}
-
-const DriverRouteRouteChildren: DriverRouteRouteChildren = {
-  DriverHistoryRoute: DriverHistoryRoute,
-  DriverIssuesRoute: DriverIssuesRoute,
-  DriverIndexRoute: DriverIndexRoute,
-}
-
-const DriverRouteRouteWithChildren = DriverRouteRoute._addFileChildren(
-  DriverRouteRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DriverRouteRoute: DriverRouteRouteWithChildren,
   HistoryRoute: HistoryRoute,
   ImpactRoute: ImpactRoute,
   OnboardingRoute: OnboardingRoute,
   RequestsRoute: RequestsRoute,
   TrackRoute: TrackRoute,
+  DriverHistoryRoute: DriverHistoryRoute,
+  DriverIssuesRoute: DriverIssuesRoute,
+  DriverMapRoute: DriverMapRoute,
   MunicipalAlertsRoute: MunicipalAlertsRoute,
   MunicipalAnalyticsRoute: MunicipalAnalyticsRoute,
   MunicipalMapRoute: MunicipalMapRoute,
   MunicipalRoutesRoute: MunicipalRoutesRoute,
+  DriverIndexRoute: DriverIndexRoute,
   MunicipalIndexRoute: MunicipalIndexRoute,
 }
 export const routeTree = rootRouteImport

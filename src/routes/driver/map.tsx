@@ -4,7 +4,7 @@ import { CityMap, MapContainer, MapControls, TRUCK_POS } from "@/components/clea
 import { StatusDot } from "@/components/cleantrack/status-pill";
 import { driverToday } from "@/lib/data";
 
-export const Route = createFileRoute("/driver")({
+export const Route = createFileRoute("/driver/map")({
   head: () => ({
     meta: [
       { title: "Route map — CleanTrack Driver" },
