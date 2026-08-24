@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { TrendingUp } from "lucide-react";
 import { useState } from "react";
 import { CountUp } from "@/components/cleantrack/count-up";
@@ -7,12 +7,12 @@ import { analytics, analyticsScopes } from "@/lib/data";
 export const Route = createFileRoute("/municipal/analytics")({
   head: () => ({
     meta: [
-      { title: "Analytics — CleanTrack Control" },
+      { title: "Analytics — ESWACH Control" },
       {
         name: "description",
         content: "Collection reliability, response times and waste diverted — one clear insight per metric.",
       },
-      { property: "og:title", content: "Analytics — CleanTrack Control" },
+      { property: "og:title", content: "Analytics — ESWACH Control" },
       { property: "og:description", content: "Editorial analytics: big numbers, one elegant chart, one insight." },
     ],
   }),

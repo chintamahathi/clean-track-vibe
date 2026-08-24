@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Clock4, Navigation, TriangleAlert } from "lucide-react";
 import { CityMap, COLLECTION_POINTS, MapContainer, MapControls } from "@/components/cleantrack/map";
 import { ProgressRing } from "@/components/cleantrack/progress-ring";
@@ -8,9 +8,9 @@ import { collectionPoints } from "@/lib/data";
 export const Route = createFileRoute("/points")({
   head: () => ({
     meta: [
-      { title: "Nearby collection points — CleanTrack" },
+      { title: "Nearby collection points — ESWACH" },
       { name: "description", content: "Fill levels, last collection times and overflow risk for collection points near you." },
-      { property: "og:title", content: "Nearby collection points — CleanTrack" },
+      { property: "og:title", content: "Nearby collection points — ESWACH" },
       { property: "og:description", content: "Live fill levels and overflow risk near you." },
     ],
   }),

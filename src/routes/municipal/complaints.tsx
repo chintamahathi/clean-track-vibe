@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Camera, ChevronRight, Clock4, MapPin } from "lucide-react";
 import { useState } from "react";
 import { municipalComplaints, type ComplaintStatus } from "@/lib/data";
@@ -6,9 +6,9 @@ import { municipalComplaints, type ComplaintStatus } from "@/lib/data";
 export const Route = createFileRoute("/municipal/complaints")({
   head: () => ({
     meta: [
-      { title: "Complaints — CleanTrack Control" },
+      { title: "Complaints — ESWACH Control" },
       { name: "description", content: "Every resident complaint with assignment, status and expected resolution time." },
-      { property: "og:title", content: "Complaints — CleanTrack Control" },
+      { property: "og:title", content: "Complaints — ESWACH Control" },
       { property: "og:description", content: "Municipal complaint management and resolution tracking." },
     ],
   }),

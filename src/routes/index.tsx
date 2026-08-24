@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronDown, ChevronRight, MapPin, Navigation, Truck } from "lucide-react";
 import { useEffect, useState } from "react";
 import truckImg from "@/assets/truck.png";
@@ -10,9 +10,9 @@ import { collectionSchedule, resident, truck } from "@/lib/data";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CleanTrack — Your collection, live" },
+      { title: "ESWACH — Your collection, live" },
       { name: "description", content: "Track your garbage truck in real time, see your ETA and never miss a collection again." },
-      { property: "og:title", content: "CleanTrack — Your collection, live" },
+      { property: "og:title", content: "ESWACH — Your collection, live" },
       { property: "og:description", content: "Live ETA for your garbage collection." },
     ],
   }),
@@ -59,7 +59,7 @@ function Index() {
               <div className="text-mega text-ivory"><CountUp to={eta} /><span className="ml-1 text-[1.6rem] font-extrabold tracking-tight text-lime">MIN</span></div>
               <p className="mt-1 text-xs font-semibold text-ivory/60">Estimated arrival · {truck.window}</p>
             </div>
-            <img src={truckImg} alt="CleanTrack collection truck" width={1024} height={1024} className="-mb-3 -mr-5 w-36 -rotate-2 drop-shadow-[0_18px_20px_oklch(0.15_0.03_168_/_45%)]" />
+            <img src={truckImg} alt="ESWACH collection truck" width={1024} height={1024} className="-mb-3 -mr-5 w-36 -rotate-2 drop-shadow-[0_18px_20px_oklch(0.15_0.03_168_/_45%)]" />
           </div>
           <Link to="/track" className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-lime py-4 text-sm font-extrabold tracking-[0.08em] text-forest-deep transition-transform hover:scale-[1.01] active:scale-[0.98]">
             <Navigation className="size-4" strokeWidth={2.6} />TRACK VEHICLE

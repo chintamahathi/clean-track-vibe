@@ -158,9 +158,9 @@ export function RoleSwitcher({ dark }: { dark?: boolean }) {
 export function BrandMark({ dark, small }: { dark?: boolean; small?: boolean }) {
   return (
     <Link to="/onboarding" className="flex items-center gap-2">
-      <span className={`flex items-center justify-center rounded-xl font-extrabold tracking-tight ${small ? "size-7 text-[11px]" : "size-9 text-sm"} ${dark ? "bg-lime text-forest-deep" : "bg-forest text-lime"}`}>CT</span>
+      <span className={`flex items-center justify-center rounded-xl font-extrabold tracking-tight ${small ? "size-7 text-[11px]" : "size-9 text-sm"} ${dark ? "bg-lime text-forest-deep" : "bg-forest text-lime"}`}>ES</span>
       <span className={`font-extrabold tracking-tight ${small ? "text-sm" : "text-base"} ${dark ? "text-ivory" : "text-forest"}`}>
-        CLEAN<span className={dark ? "text-lime" : "text-emerald"}>TRACK</span>
+        ESWA<span className={dark ? "text-lime" : "text-emerald"}>CH</span>
       </span>
     </Link>
   );

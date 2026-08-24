@@ -43,5 +43,11 @@ export function onThemeChange(cb: () => void): () => void {
   return () => { window.removeEventListener(EVENT, cb); mq.removeEventListener("change", mqh); window.removeEventListener("storage", onStorage); };
 }
 
-// Apply immediately on load to prevent flash
-if (typeof window !== "undefined") applyTheme();
+// Apply immediately on load to prevent flash.
+// Seed "light" as default if no preference has been explicitly saved yet.
+if (typeof window !== "undefined") {
+  if (!localStorage.getItem(KEY)) {
+    localStorage.setItem(KEY, "light");
+  }
+  applyTheme();
+}

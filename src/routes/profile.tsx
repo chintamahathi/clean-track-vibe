@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Bell, ChevronRight, Clock, House, Languages, LogOut, MessageCircle, Settings, Smartphone, Volume2, Zap } from "lucide-react";
 import { useState } from "react";
 import { RoleSwitcher } from "@/components/cleantrack/shell";
@@ -9,8 +9,8 @@ import { languages, resident } from "@/lib/data";
 export const Route = createFileRoute("/profile")({
   head: () => ({
     meta: [
-      { title: "Profile — CleanTrack" },
-      { name: "description", content: "Your CleanTrack profile, saved addresses, household details and collection history." },
+      { title: "Profile — ESWACH" },
+      { name: "description", content: "Your ESWACH profile, saved addresses, household details and collection history." },
     ],
   }),
   component: Profile,

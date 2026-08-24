@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { Bell, Calendar, ChevronDown, FileText, Map, MapPin, Route as RouteIcon, ShieldCheck, Truck, UserRound, Users } from "lucide-react";
 import { useState } from "react";
 import { manageSections } from "@/lib/data";
@@ -6,9 +6,9 @@ import { manageSections } from "@/lib/data";
 export const Route = createFileRoute("/municipal/manage")({
   head: () => ({
     meta: [
-      { title: "Management — CleanTrack Control" },
+      { title: "Management — ESWACH Control" },
       { name: "description", content: "Mobile-first administration: users, drivers, vehicles, colonies, routes, points and schedules." },
-      { property: "og:title", content: "Management — CleanTrack Control" },
+      { property: "og:title", content: "Management — ESWACH Control" },
       { property: "og:description", content: "Mobile-first municipal administration." },
     ],
   }),

@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Radio } from "lucide-react";
 import { CountUp } from "@/components/cleantrack/count-up";
 import { RoleSwitcher } from "@/components/cleantrack/shell";
@@ -7,12 +7,12 @@ import { alerts, municipalKpis } from "@/lib/data";
 export const Route = createFileRoute("/municipal/")({
   head: () => ({
     meta: [
-      { title: "City Control Center — CleanTrack" },
+      { title: "City Control Center — ESWACH" },
       {
         name: "description",
         content: "Live fleet overview: active, delayed and unavailable vehicles, route completion and incidents across the city.",
       },
-      { property: "og:title", content: "City Control Center — CleanTrack" },
+      { property: "og:title", content: "City Control Center — ESWACH" },
       { property: "og:description", content: "Live municipal fleet overview with oversized KPIs and alerts." },
     ],
   }),

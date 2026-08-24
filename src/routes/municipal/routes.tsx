@@ -1,16 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { StatusDot } from "@/components/cleantrack/status-pill";
 import { municipalRoutes } from "@/lib/data";
 
 export const Route = createFileRoute("/municipal/routes")({
   head: () => ({
     meta: [
-      { title: "Routes — CleanTrack Control" },
+      { title: "Routes — ESWACH Control" },
       {
         name: "description",
         content: "Every collection route in the city with live progress, assigned vehicle and status.",
       },
-      { property: "og:title", content: "Routes — CleanTrack Control" },
+      { property: "og:title", content: "Routes — ESWACH Control" },
       { property: "og:description", content: "Live progress for every collection route in the city." },
     ],
   }),

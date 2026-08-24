@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   CheckCircle2,
@@ -15,9 +15,9 @@ import { missedReasons } from "@/lib/data";
 export const Route = createFileRoute("/requests")({
   head: () => ({
     meta: [
-      { title: "Requests — CleanTrack" },
+      { title: "Requests — ESWACH" },
       { name: "description", content: "Report a missed collection in a few taps — no long forms." },
-      { property: "og:title", content: "Requests — CleanTrack" },
+      { property: "og:title", content: "Requests — ESWACH" },
       { property: "og:description", content: "Report missed collections in seconds." },
     ],
   }),

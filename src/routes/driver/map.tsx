@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, MapPin, TriangleAlert } from "lucide-react";
 import { CityMap, MapContainer, MapControls, TRUCK_POS } from "@/components/cleantrack/map";
 import { StatusDot } from "@/components/cleantrack/status-pill";
@@ -7,12 +7,12 @@ import { driverToday } from "@/lib/data";
 export const Route = createFileRoute("/driver/map")({
   head: () => ({
     meta: [
-      { title: "Route map — CleanTrack Driver" },
+      { title: "Route map — ESWACH Driver" },
       {
         name: "description",
         content: "Your live route: completed stops in emerald, current leg in cyan, remaining in grey.",
       },
-      { property: "og:title", content: "Route map — CleanTrack Driver" },
+      { property: "og:title", content: "Route map — ESWACH Driver" },
       { property: "og:description", content: "Live route visualization with stop-by-stop progress." },
     ],
   }),

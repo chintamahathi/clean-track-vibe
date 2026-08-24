@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Shuffle } from "lucide-react";
 import { useState } from "react";
 import { CityMap, MapContainer, MapControls } from "@/components/cleantrack/map";
@@ -8,12 +8,12 @@ import { vehicles } from "@/lib/data";
 export const Route = createFileRoute("/municipal/map")({
   head: () => ({
     meta: [
-      { title: "Live fleet map — CleanTrack Control" },
+      { title: "Live fleet map — ESWACH Control" },
       {
         name: "description",
         content: "Every collection vehicle live on one map — green active, amber delayed, red unavailable, cyan selected.",
       },
-      { property: "og:title", content: "Live fleet map — CleanTrack Control" },
+      { property: "og:title", content: "Live fleet map — ESWACH Control" },
       { property: "og:description", content: "Live city-wide vehicle map with status-coded markers." },
     ],
   }),

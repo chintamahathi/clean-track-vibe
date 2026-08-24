@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Check, Languages } from "lucide-react";
 import { useState } from "react";
 import { languages } from "@/lib/data";
@@ -6,10 +6,10 @@ import { languages } from "@/lib/data";
 export const Route = createFileRoute("/language")({
   head: () => ({
     meta: [
-      { title: "Choose your language — CleanTrack" },
-      { name: "description", content: "CleanTrack speaks English, తెలుగు and हिन्दी." },
-      { property: "og:title", content: "Choose your language — CleanTrack" },
-      { property: "og:description", content: "CleanTrack speaks English, తెలుగు and हिन्दी." },
+      { title: "Choose your language — ESWACH" },
+      { name: "description", content: "ESWACH speaks English, తెలుగు and हिन्दी." },
+      { property: "og:title", content: "Choose your language — ESWACH" },
+      { property: "og:description", content: "ESWACH speaks English, తెలుగు and हिन्दी." },
     ],
   }),
   component: Language,

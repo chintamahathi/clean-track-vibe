@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCheck } from "lucide-react";
 import { useState } from "react";
 import { SubHeader } from "@/components/cleantrack/sub-header";
@@ -7,9 +7,9 @@ import { notifications } from "@/lib/data";
 export const Route = createFileRoute("/notifications")({
   head: () => ({
     meta: [
-      { title: "Notifications — CleanTrack" },
+      { title: "Notifications — ESWACH" },
       { name: "description", content: "Event-driven alerts that matter: truck approaching, delays, missed collections and backup vehicles." },
-      { property: "og:title", content: "Notifications — CleanTrack" },
+      { property: "og:title", content: "Notifications — ESWACH" },
       { property: "og:description", content: "Smart, event-driven collection notifications." },
     ],
   }),

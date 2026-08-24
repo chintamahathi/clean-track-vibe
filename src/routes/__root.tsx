@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+﻿import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Outlet, Link, createRootRouteWithContext, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
@@ -43,20 +43,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { title: "CleanTrack — Smart Waste Collection" },
-      { name: "application-name", content: "CleanTrack" },
+      { title: "ESWACH — Smart Waste Collection" },
+      { name: "application-name", content: "ESWACH" },
       { name: "description", content: "Track your garbage collection vehicle, get accurate arrival updates, report missed collections, and keep your neighborhood clean." },
-      { property: "og:title", content: "CleanTrack — Smart Waste Collection" },
+      { property: "og:title", content: "ESWACH — Smart Waste Collection" },
       { property: "og:description", content: "Track your garbage truck, collection schedule, ETA and missed collections." },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "CleanTrack" },
+      { property: "og:site_name", content: "ESWACH" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "CleanTrack — Smart Waste Collection" },
+      { name: "twitter:title", content: "ESWACH — Smart Waste Collection" },
       { name: "twitter:description", content: "Track your garbage truck, collection schedule, ETA and missed collections." },
       { name: "theme-color", content: "#063B2A" },
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
-      { name: "apple-mobile-web-app-title", content: "CleanTrack" },
+      { name: "apple-mobile-web-app-title", content: "ESWACH" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
     ],
     links: [

@@ -1,6 +1,6 @@
-{
-  "name": "CleanTrack — Smart Waste Collection",
-  "short_name": "CleanTrack",
+﻿{
+  "name": "ESWACH — Smart Waste Collection",
+  "short_name": "ESWACH",
   "description": "Smart garbage collection tracking for cleaner streets.",
   "start_url": "/",
   "display": "standalone",

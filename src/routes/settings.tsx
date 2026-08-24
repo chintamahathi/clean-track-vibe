@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Accessibility, Bell, ChevronRight, Globe, Info, Lock, MapPin, Moon, Recycle, ShieldCheck, Smartphone, Sun, SunMoon, Volume2, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SubHeader } from "@/components/cleantrack/sub-header";
@@ -9,7 +9,7 @@ import { languages } from "@/lib/data";
 export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
-      { title: "Settings — CleanTrack" },
+      { title: "Settings — ESWACH" },
       { name: "description", content: "Language, notifications, privacy, location, pickup preferences and accessibility." },
     ],
   }),
@@ -125,13 +125,13 @@ function PrivacySection({ onBack }: { onBack: () => void }) {
     <div className="px-5 pt-6">
       <SubHeader title="Privacy" onBack={onBack} />
       <section className="mt-5 rounded-[2rem] bg-card p-6 shadow-card space-y-4">
-        <div className="flex items-start gap-3"><ShieldCheck className="size-5 shrink-0 text-emerald mt-0.5" /><p className="text-sm leading-relaxed text-forest">Your personal information is only visible to authorized CleanTrack administrators and municipal managers.</p></div>
+        <div className="flex items-start gap-3"><ShieldCheck className="size-5 shrink-0 text-emerald mt-0.5" /><p className="text-sm leading-relaxed text-forest">Your personal information is only visible to authorized ESWACH administrators and municipal managers.</p></div>
         <div className="flex items-start gap-3"><Lock className="size-5 shrink-0 text-emerald mt-0.5" /><p className="text-sm leading-relaxed text-forest">Collection drivers see operational collection information only — not your personal identity, name, or contact details.</p></div>
       </section>
       <section className="mt-4 rounded-[2rem] bg-pale p-5 shadow-card space-y-3">
         <p className="text-[10px] font-extrabold tracking-[0.18em] text-forest/50">DATA CONTROLS</p>
-        <ToggleRow icon={<Lock className="size-4" />} label="Location sharing" hint="Allow CleanTrack to use your location for tracking" defaultOn />
-        <ToggleRow icon={<ShieldCheck className="size-4" />} label="Usage analytics" hint="Help us improve CleanTrack (anonymous)" defaultOn />
+        <ToggleRow icon={<Lock className="size-4" />} label="Location sharing" hint="Allow ESWACH to use your location for tracking" defaultOn />
+        <ToggleRow icon={<ShieldCheck className="size-4" />} label="Usage analytics" hint="Help us improve ESWACH (anonymous)" defaultOn />
       </section>
     </div>
   );
@@ -237,7 +237,7 @@ function AccessibilitySection({ onBack }: { onBack: () => void }) {
 function AboutSection({ onBack }: { onBack: () => void }) {
   return (
     <div className="px-5 pt-6">
-      <SubHeader title="About CleanTrack" onBack={onBack} />
+      <SubHeader title="About ESWACH" onBack={onBack} />
       <section className="animate-float-in mt-5 relative overflow-hidden rounded-[2rem] bg-forest p-8 text-ivory text-center shadow-float">
         <div aria-hidden className="absolute -right-16 -top-20 size-56 rounded-full bg-emerald/20 blur-2xl" />
         <div className="relative">
@@ -295,7 +295,7 @@ function Settings() {
         <div className="h-px bg-forest/6 mx-1" />
         <SettingRow icon={<Accessibility className="size-4" />} label="Accessibility"      hint="Larger text, contrast, motion"       onClick={() => setSection("accessibility")} />
         <div className="h-px bg-forest/6 mx-1" />
-        <SettingRow icon={<Info className="size-4" />}          label="About CleanTrack"   hint="Version, privacy policy, terms"      onClick={() => setSection("about")} />
+        <SettingRow icon={<Info className="size-4" />}          label="About ESWACH"   hint="Version, privacy policy, terms"      onClick={() => setSection("about")} />
       </div>
       <div className="h-6" />
     </div>

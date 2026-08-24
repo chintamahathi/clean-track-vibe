@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Camera, CheckCircle2, Clock4, MapPin, Plus, TriangleAlert, Truck } from "lucide-react";
 import { useState } from "react";
 import { StepTimeline } from "@/components/cleantrack/timeline";
@@ -9,7 +9,7 @@ import { complaints, complaintTimeline, type Complaint, type ComplaintStatus } f
 export const Route = createFileRoute("/complaints")({
   head: () => ({
     meta: [
-      { title: "Missed your trash? — CleanTrack" },
+      { title: "Missed your trash? — ESWACH" },
       { name: "description", content: "Report a missed collection, skipped street, or vehicle issue in seconds." },
     ],
   }),

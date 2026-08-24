@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, CircleSlash, Droplets, MapPin, QrCode, Recycle, ScanLine, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import { driverToday } from "@/lib/data";
@@ -6,9 +6,9 @@ import { driverToday } from "@/lib/data";
 export const Route = createFileRoute("/driver/verify")({
   head: () => ({
     meta: [
-      { title: "Collection verification — CleanTrack Driver" },
+      { title: "Collection verification — ESWACH Driver" },
       { name: "description", content: "GPS-verified collection logging: scan, mark collected, mark missed — in seconds." },
-      { property: "og:title", content: "Collection verification — CleanTrack Driver" },
+      { property: "og:title", content: "Collection verification — ESWACH Driver" },
       { property: "og:description", content: "Fast, GPS-verified collection logging for drivers." },
     ],
   }),

@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { CheckCircle2, CreditCard, FileText, Receipt } from "lucide-react";
 import { SubHeader } from "@/components/cleantrack/sub-header";
 
 export const Route = createFileRoute("/bills")({
   head: () => ({
     meta: [
-      { title: "Bills & Payments — CleanTrack" },
+      { title: "Bills & Payments — ESWACH" },
       { name: "description", content: "View your collection billing status, payment history, and account balance." },
     ],
   }),

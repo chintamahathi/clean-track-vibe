@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Building2, Check, House, Truck, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 import { BrandMark } from "@/components/cleantrack/shell";
@@ -6,9 +6,9 @@ import { BrandMark } from "@/components/cleantrack/shell";
 export const Route = createFileRoute("/role-select")({
   head: () => ({
     meta: [
-      { title: "Choose your role — CleanTrack" },
+      { title: "Choose your role — ESWACH" },
       { name: "description", content: "Continue as a resident, collection driver, or municipal control team." },
-      { property: "og:title", content: "Choose your role — CleanTrack" },
+      { property: "og:title", content: "Choose your role — ESWACH" },
       { property: "og:description", content: "Continue as a resident, collection driver, or municipal control team." },
     ],
   }),
@@ -55,7 +55,7 @@ function RoleSelect() {
       <h1 className="animate-float-in mt-8 text-3xl font-extrabold leading-tight tracking-tight text-forest">
         Who's using
         <br />
-        CleanTrack?
+        ESWACH?
       </h1>
       <p className="animate-float-in mt-2 text-sm text-muted-foreground" style={{ animationDelay: "80ms" }}>
         Select your role to continue to your dashboard.

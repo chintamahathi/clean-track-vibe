@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   CheckCircle2,
   Construction,
@@ -19,12 +19,12 @@ import { driverIssuesV2 } from "@/lib/data";
 export const Route = createFileRoute("/driver/issues")({
   head: () => ({
     meta: [
-      { title: "Report an issue — CleanTrack Driver" },
+      { title: "Report an issue — ESWACH Driver" },
       {
         name: "description",
         content: "One-tap issue reporting built for the road: road blocked, breakdown, vehicle or staff issues.",
       },
-      { property: "og:title", content: "Report an issue — CleanTrack Driver" },
+      { property: "og:title", content: "Report an issue — ESWACH Driver" },
       { property: "og:description", content: "Fast, icon-driven issue reporting for drivers." },
     ],
   }),

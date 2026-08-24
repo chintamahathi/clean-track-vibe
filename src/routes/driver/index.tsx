@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, ChevronRight, MapPin, Navigation, Play, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getArea, onAreaChange } from "@/lib/driverArea";
@@ -7,7 +7,7 @@ import { driverToday } from "@/lib/data";
 export const Route = createFileRoute("/driver/")({
   head: () => ({
     meta: [
-      { title: "Today's route — CleanTrack Driver" },
+      { title: "Today's route — ESWACH Driver" },
       {
         name: "description",
         content: "Your route at a glance: stops remaining, next stop — built for the road.",

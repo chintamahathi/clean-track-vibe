@@ -1,17 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { BellRing, Brain, ChevronDown, Check, Shuffle, TriangleAlert, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CityMap, HOME_POS, MapContainer, MapControls, TRUCK_POS } from "@/components/cleantrack/map";
 import { CountUp } from "@/components/cleantrack/count-up";
 import { ProgressRing } from "@/components/cleantrack/progress-ring";
 import { StatusPill } from "@/components/cleantrack/status-pill";
-import { SubHeader } from "@/components/cleantrack/sub-header";
 import { backupVehicle, etaPrediction, truck } from "@/lib/data";
 
 export const Route = createFileRoute("/track")({
   head: () => ({
     meta: [
-      { title: "Track your truck live — CleanTrack" },
+      { title: "Track your truck live — ESWACH" },
       { name: "description", content: "Watch SAT-247 approach your home in real time with a live ETA and collection status." },
     ],
   }),
@@ -53,9 +52,6 @@ function Track() {
 
   return (
     <div className="flex flex-col">
-      <div className="px-4 pt-5">
-        <SubHeader title="Track" />
-      </div>
 
       <MapContainer className="animate-float-in mx-4 mt-4 h-[48dvh] min-h-[320px]">
         <CityMap

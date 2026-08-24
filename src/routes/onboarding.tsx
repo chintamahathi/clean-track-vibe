@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, House, Leaf, MapPin, Navigation, Truck } from "lucide-react";
 import { useRef, useState, type ReactNode } from "react";
 import streetImg from "@/assets/onboard-street.jpg";
@@ -9,13 +9,13 @@ import { CityMap, HOME_POS, TRUCK_POS } from "@/components/cleantrack/map";
 export const Route = createFileRoute("/onboarding")({
   head: () => ({
     meta: [
-      { title: "Welcome to CleanTrack — Know. Track. Keep Your Street Clean." },
+      { title: "Welcome to ESWACH — Know. Track. Keep Your Street Clean." },
       {
         name: "description",
         content:
-          "Know your collection schedule, track your garbage truck live, and keep your street clean with CleanTrack.",
+          "Know your collection schedule, track your garbage truck live, and keep your street clean with ESWACH.",
       },
-      { property: "og:title", content: "Welcome to CleanTrack" },
+      { property: "og:title", content: "Welcome to ESWACH" },
       {
         property: "og:description",
         content: "Know your collection. Track your truck. Keep your street clean.",
@@ -50,7 +50,7 @@ function KnowScreen() {
   return (
     <div className="flex h-full flex-col">
       <div className="px-4 pt-5">
-        <p className="text-[7px] font-extrabold tracking-[0.22em] text-emerald">CLEANTRACK</p>
+        <p className="text-[7px] font-extrabold tracking-[0.22em] text-emerald">ESWACH</p>
         <h3 className="mt-1 text-[15px] font-extrabold leading-[1.05] tracking-tight text-forest">
           KNOW YOUR
           <br />
@@ -82,7 +82,7 @@ function TrackScreen() {
   return (
     <div className="flex h-full flex-col bg-cream">
       <div className="px-4 pt-5">
-        <p className="text-[7px] font-extrabold tracking-[0.22em] text-emerald">YOUR CLEANTRACK</p>
+        <p className="text-[7px] font-extrabold tracking-[0.22em] text-emerald">YOUR ESWACH</p>
         <h3 className="mt-1 text-[15px] font-extrabold leading-[1.05] tracking-tight text-forest">
           TRACK YOUR
           <br />
@@ -200,7 +200,7 @@ function Onboarding() {
   const page = PAGES[index]!;
   const last = index === PAGES.length - 1;
 
-  const next = () => (last ? navigate({ to: "/language" }) : setIndex((i) => i + 1));
+  const next = () => (last ? navigate({ to: "/login" }) : setIndex((i) => i + 1));
   const skip = () => {
     window.localStorage.setItem("ct_onboarded", "1");
     navigate({ to: "/" });

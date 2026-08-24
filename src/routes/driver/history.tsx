@@ -1,15 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { StatusPill } from "@/components/cleantrack/status-pill";
 
 export const Route = createFileRoute("/driver/history")({
   head: () => ({
     meta: [
-      { title: "Route history — CleanTrack Driver" },
+      { title: "Route history — ESWACH Driver" },
       {
         name: "description",
         content: "Your past routes, completion rates and households served.",
       },
-      { property: "og:title", content: "Route history — CleanTrack Driver" },
+      { property: "og:title", content: "Route history — ESWACH Driver" },
       { property: "og:description", content: "Past routes and completion performance for drivers." },
     ],
   }),

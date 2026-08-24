@@ -1,13 +1,13 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, BellRing, Brain, Route as RouteIcon, Shuffle, Sparkles } from "lucide-react";
 import { demandAreas, predictedDelay, routeOptimization, smartDelay } from "@/lib/data";
 
 export const Route = createFileRoute("/municipal/insights")({
   head: () => ({
     meta: [
-      { title: "Smart insights — CleanTrack Control" },
+      { title: "Smart insights — ESWACH Control" },
       { name: "description", content: "Predictive operations: delay detection, smart ETAs, route optimization and demand forecasting." },
-      { property: "og:title", content: "Smart insights — CleanTrack Control" },
+      { property: "og:title", content: "Smart insights — ESWACH Control" },
       { property: "og:description", content: "Predictive fleet intelligence for municipal operations." },
     ],
   }),

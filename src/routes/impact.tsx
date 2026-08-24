@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Award, Flame, House, Recycle, TreePine, TrendingDown, Truck } from "lucide-react";
 import cleanStreet from "@/assets/clean-street.jpg";
 import { CountUp } from "@/components/cleantrack/count-up";
@@ -8,13 +8,13 @@ import { badges, colonyProgressCompare, impact, sustainabilityScore } from "@/li
 export const Route = createFileRoute("/impact")({
   head: () => ({
     meta: [
-      { title: "Your impact — CleanTrack" },
+      { title: "Your impact — ESWACH" },
       {
         name: "description",
         content:
           "Your collection streak, kilograms collected and colony reliability — every successful collection keeps waste out of the street.",
       },
-      { property: "og:title", content: "Your impact — CleanTrack" },
+      { property: "og:title", content: "Your impact — ESWACH" },
       { property: "og:description", content: "Streaks, kilograms and colony-level sustainability impact." },
     ],
   }),

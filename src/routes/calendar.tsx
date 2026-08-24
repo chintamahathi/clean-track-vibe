@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { CalendarDays, Clock, Truck, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SubHeader } from "@/components/cleantrack/sub-header";
@@ -8,7 +8,7 @@ import { collectionSchedule, truck } from "@/lib/data";
 export const Route = createFileRoute("/calendar")({
   head: () => ({
     meta: [
-      { title: "CleanTrack — Collection calendar" },
+      { title: "ESWACH — Collection calendar" },
       { name: "description", content: "Your weekly garbage collection schedule and pickup windows." },
     ],
   }),

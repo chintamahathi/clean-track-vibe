@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { House, MapPin, PencilLine, Plus, Star, Truck } from "lucide-react";
 import { useState } from "react";
 import { SubHeader } from "@/components/cleantrack/sub-header";
@@ -7,9 +7,9 @@ import { savedAddresses } from "@/lib/data";
 export const Route = createFileRoute("/addresses")({
   head: () => ({
     meta: [
-      { title: "Saved addresses — CleanTrack" },
+      { title: "Saved addresses — ESWACH" },
       { name: "description", content: "Home, work and other addresses — each with its assigned truck and collection window." },
-      { property: "og:title", content: "Saved addresses — CleanTrack" },
+      { property: "og:title", content: "Saved addresses — ESWACH" },
       { property: "og:description", content: "Manage multiple collection addresses." },
     ],
   }),

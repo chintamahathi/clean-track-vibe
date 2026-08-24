@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Brain } from "lucide-react";
 import { CountUp } from "@/components/cleantrack/count-up";
 import { ProgressRing } from "@/components/cleantrack/progress-ring";
@@ -7,12 +7,12 @@ import { alerts, overflowPoint, routeMonitor } from "@/lib/data";
 export const Route = createFileRoute("/municipal/alerts")({
   head: () => ({
     meta: [
-      { title: "Alerts — CleanTrack Control" },
+      { title: "Alerts — ESWACH Control" },
       {
         name: "description",
         content: "Vehicle outages, overflow risks and delays — prioritized and actionable in one tap.",
       },
-      { property: "og:title", content: "Alerts — CleanTrack Control" },
+      { property: "og:title", content: "Alerts — ESWACH Control" },
       { property: "og:description", content: "Prioritized municipal alerts with one-tap actions." },
     ],
   }),

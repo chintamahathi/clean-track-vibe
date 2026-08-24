@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Leaf } from "lucide-react";
 import { useEffect } from "react";
 import truckImg from "@/assets/truck.png";
@@ -6,12 +6,12 @@ import truckImg from "@/assets/truck.png";
 export const Route = createFileRoute("/splash")({
   head: () => ({
     meta: [
-      { title: "CleanTrack — Know. Track. Collect. Sustain." },
+      { title: "ESWACH — Know. Track. Collect. Sustain." },
       {
         name: "description",
         content: "Your garbage collection, made predictable. Premium live tracking for waste collection.",
       },
-      { property: "og:title", content: "CleanTrack" },
+      { property: "og:title", content: "ESWACH" },
       { property: "og:description", content: "Your garbage collection, made predictable." },
     ],
   }),
@@ -90,7 +90,7 @@ function Splash() {
       {/* truck */}
       <img
         src={truckImg}
-        alt="CleanTrack collection truck on a clean, green street"
+        alt="ESWACH collection truck on a clean, green street"
         width={1024}
         height={1024}
         className="animate-soft-bounce animate-float-in relative w-56 drop-shadow-[0_30px_34px_oklch(0.314_0.061_165.9_/_28%)]"

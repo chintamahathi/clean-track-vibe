@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, ChevronLeft, Mail, Phone, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { BrandMark } from "@/components/cleantrack/shell";
@@ -6,9 +6,9 @@ import { BrandMark } from "@/components/cleantrack/shell";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Sign in — CleanTrack" },
+      { title: "Sign in — ESWACH" },
       { name: "description", content: "One-tap sign in with your phone number or email — no passwords." },
-      { property: "og:title", content: "Sign in — CleanTrack" },
+      { property: "og:title", content: "Sign in — ESWACH" },
       { property: "og:description", content: "One-tap sign in with OTP." },
     ],
   }),

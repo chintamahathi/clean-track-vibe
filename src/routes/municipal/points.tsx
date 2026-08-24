@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Clock4, MapPin, Plus, Siren, Truck } from "lucide-react";
 import { ProgressRing } from "@/components/cleantrack/progress-ring";
 import { collectionPoints } from "@/lib/data";
@@ -6,9 +6,9 @@ import { collectionPoints } from "@/lib/data";
 export const Route = createFileRoute("/municipal/points")({
   head: () => ({
     meta: [
-      { title: "Collection points — CleanTrack Control" },
+      { title: "Collection points — ESWACH Control" },
       { name: "description", content: "Manage collection points: capacity, fill, schedules, overflow risk and emergency dispatch." },
-      { property: "og:title", content: "Collection points — CleanTrack Control" },
+      { property: "og:title", content: "Collection points — ESWACH Control" },
       { property: "og:description", content: "Collection point management with overflow prediction." },
     ],
   }),

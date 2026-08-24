@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Locate, MapPin, PencilLine } from "lucide-react";
 import { useState } from "react";
 import { CityMap, HOME_POS, MapContainer } from "@/components/cleantrack/map";
@@ -7,9 +7,9 @@ import { resident } from "@/lib/data";
 export const Route = createFileRoute("/location")({
   head: () => ({
     meta: [
-      { title: "Set your location — CleanTrack" },
-      { name: "description", content: "Tell CleanTrack where to track your collection — your home, colony and ward." },
-      { property: "og:title", content: "Set your location — CleanTrack" },
+      { title: "Set your location — ESWACH" },
+      { name: "description", content: "Tell ESWACH where to track your collection — your home, colony and ward." },
+      { property: "og:title", content: "Set your location — ESWACH" },
       { property: "og:description", content: "Where should we track your collection?" },
     ],
   }),

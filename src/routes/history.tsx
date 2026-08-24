@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Weight } from "lucide-react";
 import { StatusPill } from "@/components/cleantrack/status-pill";
 import { SubHeader } from "@/components/cleantrack/sub-header";
@@ -7,7 +7,7 @@ import { history } from "@/lib/data";
 export const Route = createFileRoute("/history")({
   head: () => ({
     meta: [
-      { title: "Collection history — CleanTrack" },
+      { title: "Collection history — ESWACH" },
       { name: "description", content: "Every collection at your doorstep — dates, times, vehicles and how much waste was collected." },
     ],
   }),

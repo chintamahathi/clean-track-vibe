@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { CityMap, MapContainer, ROUTE_D } from "@/components/cleantrack/map";
@@ -7,9 +7,9 @@ import { routeMonitor } from "@/lib/data";
 export const Route = createFileRoute("/municipal/monitor")({
   head: () => ({
     meta: [
-      { title: "Route monitoring — CleanTrack Control" },
+      { title: "Route monitoring — ESWACH Control" },
       { name: "description", content: "Replay any vehicle's route: completed, missed and deviated streets with timestamps." },
-      { property: "og:title", content: "Route monitoring — CleanTrack Control" },
+      { property: "og:title", content: "Route monitoring — ESWACH Control" },
       { property: "og:description", content: "Route replay and street-level compliance monitoring." },
     ],
   }),

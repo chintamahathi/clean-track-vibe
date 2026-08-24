@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Check, ChevronRight, Clock, History, LogOut, MapPin, Truck, Wrench, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { RoleSwitcher } from "@/components/cleantrack/shell";
@@ -8,9 +8,9 @@ import { driverProfile } from "@/lib/data";
 export const Route = createFileRoute("/driver/profile")({
   head: () => ({
     meta: [
-      { title: "Driver profile — CleanTrack" },
+      { title: "Driver profile — ESWACH" },
       { name: "description", content: "Vehicle, shift, assigned route and colonies for collection drivers." },
-      { property: "og:title", content: "Driver profile — CleanTrack" },
+      { property: "og:title", content: "Driver profile — ESWACH" },
       { property: "og:description", content: "Vehicle, shift and route assignment details." },
     ],
   }),
