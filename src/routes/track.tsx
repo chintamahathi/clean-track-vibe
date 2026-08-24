@@ -60,8 +60,9 @@ function Track() {
         <CityMap
           truck={{ x: TRUCK_POS.x, y: TRUCK_POS.y, ...(phase === "normal" ? {} : { color: "var(--coral)" }) }}
           home={HOME_POS}
-          vehicles={phase === "found" || phase === "assigned" ? [{ id: backupVehicle.id, x: 128, y: 330, status: "active" }] : undefined}
-          selectedId={backupVehicle.id}
+          {...(phase === "found" || phase === "assigned"
+            ? { vehicles: [{ id: backupVehicle.id, x: 128, y: 330, status: "active" as const }], selectedId: backupVehicle.id }
+            : {})}
         />
         <MapControls />
 
