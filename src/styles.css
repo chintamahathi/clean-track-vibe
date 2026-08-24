@@ -86,6 +86,9 @@
   --animate-float-in: float-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-route-flow: route-flow 1.6s linear infinite;
   --animate-soft-bounce: soft-bounce 2.6s ease-in-out infinite;
+  --animate-leaf-drift: leaf-drift 7s ease-in-out infinite;
+  --animate-dash-draw: dash-draw 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  --animate-word-up: word-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 :root {
@@ -191,6 +194,36 @@
   }
   50% {
     transform: translateY(-8px);
+  }
+}
+
+@keyframes leaf-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(14px) rotate(10deg);
+  }
+}
+
+@keyframes dash-draw {
+  from {
+    stroke-dashoffset: 600;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes word-up {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 

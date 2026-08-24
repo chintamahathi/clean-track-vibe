@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Bell, ChevronRight, Leaf, MapPin, Navigation, Truck } from "lucide-react";
+import { Bell, ChevronDown, ChevronRight, Leaf, MapPin, Navigation, Truck } from "lucide-react";
 import { useEffect, useState } from "react";
 import truckImg from "@/assets/truck.png";
 import { CountUp } from "@/components/cleantrack/count-up";
 import { RoleSwitcher } from "@/components/cleantrack/shell";
 import { StatusPill } from "@/components/cleantrack/status-pill";
-import { impact, resident, truck } from "@/lib/data";
+import { WetDryStatus } from "@/components/cleantrack/waste-status";
+import { collectionSchedule, impact, resident, truck, wetDryToday } from "@/lib/data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,7 +37,7 @@ function Index() {
       {/* header */}
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Link to="/onboarding" aria-label="Open onboarding">
+          <Link to="/profile" aria-label="Open profile">
             <span className="flex size-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--emerald),var(--cyan))] text-sm font-extrabold text-primary-foreground shadow-lift">
               A
             </span>
@@ -46,14 +47,14 @@ function Index() {
             <h1 className="text-lg font-extrabold tracking-tight text-forest">{resident.name}</h1>
           </div>
         </div>
-        <button
-          type="button"
+        <Link
+          to="/notifications"
           aria-label="Notifications"
           className="relative flex size-11 items-center justify-center rounded-full bg-card shadow-card"
         >
           <Bell className="size-[18px] text-forest" />
           <span className="absolute right-2.5 top-2.5 size-2 rounded-full bg-coral" />
-        </button>
+        </Link>
       </header>
 
       <div className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
@@ -152,9 +153,70 @@ function Index() {
         </Link>
       </div>
 
+      {/* wet / dry segregation status */}
+      <div className="animate-float-in mt-4" style={{ animationDelay: "180ms" }}>
+        <WetDryStatus wet={wetDryToday.wet} dry={wetDryToday.dry} />
+      </div>
+
+      {/* collection schedule (expandable) */}
+      <ScheduleCard />
+
+      {/* nearby collection points */}
+      <Link
+        to="/points"
+        className="group mt-4 flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card transition-transform hover:scale-[1.01]"
+      >
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-amber-soft text-[oklch(0.6_0.13_70)]">
+          <MapPin className="size-5" />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-extrabold text-forest">Nearby collection points</span>
+          <span className="block text-[11px] text-muted-foreground">Point #14 · 250 m · 82% full</span>
+        </span>
+        <ChevronRight className="size-4 shrink-0 text-forest/40 transition-transform group-hover:translate-x-1" />
+      </Link>
+
       <div className="mt-6 flex justify-center pb-2">
         <RoleSwitcher />
       </div>
     </div>
+  );
+}
+
+function ScheduleCard() {
+  const [open, setOpen] = useState(false);
+  const rows = [
+    ["Frequency", collectionSchedule.frequency],
+    ["Schedule", collectionSchedule.days],
+    ["Window", collectionSchedule.window],
+    ["Assigned vehicle", collectionSchedule.vehicle],
+    ["Next collection", collectionSchedule.nextCollection],
+    ["Last collection", collectionSchedule.lastCollection],
+  ];
+  return (
+    <section className="animate-float-in mt-4 rounded-[2rem] bg-card p-5 shadow-card" style={{ animationDelay: "240ms" }}>
+      <button type="button" onClick={() => setOpen((o) => !o)} className="flex w-full items-center gap-3 text-left">
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-soft text-emerald">
+          <Truck className="size-5" />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-extrabold text-forest">Collection schedule</span>
+          <span className="block text-[11px] text-muted-foreground">
+            {collectionSchedule.frequency} · {collectionSchedule.window} · {collectionSchedule.vehicle}
+          </span>
+        </span>
+        <ChevronDown className={`size-4 shrink-0 text-forest/40 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <dl className="animate-float-in mt-4 space-y-2 border-t border-forest/8 pt-4">
+          {rows.map(([k, v]) => (
+            <div key={k} className="flex items-center justify-between text-xs">
+              <dt className="font-semibold text-muted-foreground">{k}</dt>
+              <dd className="font-extrabold text-forest">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+    </section>
   );
 }
