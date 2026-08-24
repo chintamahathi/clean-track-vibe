@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Bell, ChevronDown, ChevronRight, Leaf, MapPin, Navigation, Truck } from "lucide-react";
+import { ChevronDown, ChevronRight, Leaf, MapPin, Navigation, Truck, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import truckImg from "@/assets/truck.png";
 import { CountUp } from "@/components/cleantrack/count-up";
-import { RoleSwitcher } from "@/components/cleantrack/shell";
 import { StatusPill } from "@/components/cleantrack/status-pill";
 import { WetDryStatus } from "@/components/cleantrack/waste-status";
 import { collectionSchedule, impact, resident, truck, wetDryToday } from "@/lib/data";
@@ -36,31 +35,27 @@ function Index() {
     <div className="px-5 pt-6">
       {/* header */}
       <header className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Link to="/profile" aria-label="Open profile">
-            <span className="flex size-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--emerald),var(--cyan))] text-sm font-extrabold text-primary-foreground shadow-lift">
-              A
-            </span>
-          </Link>
-          <div>
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--emerald),var(--cyan))] text-sm font-extrabold text-primary-foreground shadow-lift">
+            A
+          </span>
+          <div className="min-w-0">
             <p className="text-xs font-medium text-muted-foreground">Good evening,</p>
             <h1 className="text-lg font-extrabold tracking-tight text-forest">{resident.name}</h1>
+            <div className="mt-0.5 flex items-center gap-1 text-[11px] font-semibold text-muted-foreground">
+              <MapPin className="size-3 text-emerald" />
+              {resident.area}
+            </div>
           </div>
         </div>
         <Link
-          to="/notifications"
-          aria-label="Notifications"
-          className="relative flex size-11 items-center justify-center rounded-full bg-card shadow-card"
+          to="/profile"
+          aria-label="Open profile"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-card shadow-card"
         >
-          <Bell className="size-[18px] text-forest" />
-          <span className="absolute right-2.5 top-2.5 size-2 rounded-full bg-coral" />
+          <UserRound className="size-[18px] text-forest" />
         </Link>
       </header>
-
-      <div className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
-        <MapPin className="size-3.5 text-emerald" />
-        {resident.area}
-      </div>
 
       {/* hero collection card */}
       <section className="animate-float-in relative mt-5 overflow-hidden rounded-[2rem] bg-forest p-6 text-ivory shadow-float">
@@ -176,9 +171,6 @@ function Index() {
         <ChevronRight className="size-4 shrink-0 text-forest/40 transition-transform group-hover:translate-x-1" />
       </Link>
 
-      <div className="mt-6 flex justify-center pb-2">
-        <RoleSwitcher />
-      </div>
     </div>
   );
 }
