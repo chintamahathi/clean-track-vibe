@@ -260,12 +260,12 @@ function Onboarding() {
       </div>
 
       {/* three-phone composition */}
-      <div className="relative z-10 mt-4 h-[44vh] min-h-[300px] px-2">
+      <div className="relative z-10 mt-4 h-[50vh] min-h-[330px] px-2">
         <div key={`deck-${index}`} className="animate-float-in absolute inset-0">
-          <PhoneFrame className="absolute left-[-6%] top-[9%] w-[38%] -rotate-[12deg] opacity-75">
+          <PhoneFrame className="absolute left-[-3%] top-[10%] w-[38%] -rotate-[12deg] opacity-75">
             <div className="pointer-events-none">{left.screen}</div>
           </PhoneFrame>
-          <PhoneFrame className="absolute right-[-6%] top-[9%] w-[38%] rotate-[12deg] opacity-75">
+          <PhoneFrame className="absolute right-[-3%] top-[10%] w-[38%] rotate-[12deg] opacity-75">
             <div className="pointer-events-none">{right.screen}</div>
           </PhoneFrame>
           <PhoneFrame className="absolute left-1/2 top-0 z-10 w-[50%] -translate-x-1/2 shadow-[0_44px_72px_-26px_oklch(0.314_0.061_165.9_/_48%)]">
