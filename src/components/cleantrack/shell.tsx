@@ -2,15 +2,17 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Bell,
   ChartLine,
-  Clock,
   Home,
   Leaf,
   Map,
   MapPin,
   Plus,
   Route as RouteIcon,
+  ScanLine,
+  Settings2,
   Sun,
   TriangleAlert,
+  UserRound,
   type LucideIcon,
 } from "lucide-react";
 import type { ReactNode } from "react";
@@ -23,29 +25,33 @@ const NAVS: Record<Role, NavItem[]> = {
   resident: [
     { to: "/", label: "Home", icon: Home },
     { to: "/track", label: "Track", icon: MapPin },
-    { to: "/requests", label: "Requests", icon: Plus },
-    { to: "/history", label: "History", icon: Clock },
+    { to: "/requests", label: "Collection", icon: Plus },
     { to: "/impact", label: "Impact", icon: Leaf },
+    { to: "/profile", label: "Profile", icon: UserRound },
   ],
   driver: [
     { to: "/driver", label: "Today", icon: Sun },
     { to: "/driver/map", label: "Route", icon: RouteIcon },
+    { to: "/driver/verify", label: "Collect", icon: ScanLine },
     { to: "/driver/issues", label: "Issues", icon: TriangleAlert },
-    { to: "/driver/history", label: "History", icon: Clock },
+    { to: "/driver/profile", label: "Profile", icon: UserRound },
   ],
   municipal: [
     { to: "/municipal", label: "Overview", icon: Home },
-    { to: "/municipal/map", label: "Map", icon: Map },
-    { to: "/municipal/alerts", label: "Alerts", icon: Bell },
+    { to: "/municipal/map", label: "Live Map", icon: Map },
     { to: "/municipal/routes", label: "Routes", icon: RouteIcon },
-    { to: "/municipal/analytics", label: "Analytics", icon: ChartLine },
+    { to: "/municipal/alerts", label: "Alerts", icon: Bell },
+    { to: "/municipal/analytics", label: "Insights", icon: ChartLine },
+    { to: "/municipal/manage", label: "Manage", icon: Settings2 },
   ],
 };
+
+const NO_NAV_PREFIXES = ["/onboarding", "/splash", "/language", "/login", "/location"];
 
 function roleFromPath(pathname: string): Role | null {
   if (pathname.startsWith("/driver")) return "driver";
   if (pathname.startsWith("/municipal")) return "municipal";
-  if (pathname.startsWith("/onboarding")) return null;
+  if (NO_NAV_PREFIXES.some((p) => pathname.startsWith(p))) return null;
   return "resident";
 }
 

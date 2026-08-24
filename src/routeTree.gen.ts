@@ -10,24 +10,50 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AddressesRouteImport } from './routes/addresses'
+import { Route as ComplaintsRouteImport } from './routes/complaints'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as LanguageRouteImport } from './routes/language'
+import { Route as LocationRouteImport } from './routes/location'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as PointsRouteImport } from './routes/points'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RequestsRouteImport } from './routes/requests'
+import { Route as SplashRouteImport } from './routes/splash'
 import { Route as TrackRouteImport } from './routes/track'
 import { Route as DriverIndexRouteImport } from './routes/driver/index'
 import { Route as DriverHistoryRouteImport } from './routes/driver/history'
 import { Route as DriverIssuesRouteImport } from './routes/driver/issues'
 import { Route as DriverMapRouteImport } from './routes/driver/map'
+import { Route as DriverProfileRouteImport } from './routes/driver/profile'
+import { Route as DriverVerifyRouteImport } from './routes/driver/verify'
 import { Route as MunicipalIndexRouteImport } from './routes/municipal/index'
 import { Route as MunicipalAlertsRouteImport } from './routes/municipal/alerts'
 import { Route as MunicipalAnalyticsRouteImport } from './routes/municipal/analytics'
+import { Route as MunicipalComplaintsRouteImport } from './routes/municipal/complaints'
+import { Route as MunicipalInsightsRouteImport } from './routes/municipal/insights'
+import { Route as MunicipalManageRouteImport } from './routes/municipal/manage'
 import { Route as MunicipalMapRouteImport } from './routes/municipal/map'
+import { Route as MunicipalMonitorRouteImport } from './routes/municipal/monitor'
+import { Route as MunicipalPointsRouteImport } from './routes/municipal/points'
 import { Route as MunicipalRoutesRouteImport } from './routes/municipal/routes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AddressesRoute = AddressesRouteImport.update({
+  id: '/addresses',
+  path: '/addresses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplaintsRoute = ComplaintsRouteImport.update({
+  id: '/complaints',
+  path: '/complaints',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HistoryRoute = HistoryRouteImport.update({
@@ -40,14 +66,49 @@ const ImpactRoute = ImpactRouteImport.update({
   path: '/impact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LanguageRoute = LanguageRouteImport.update({
+  id: '/language',
+  path: '/language',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationRoute = LocationRouteImport.update({
+  id: '/location',
+  path: '/location',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PointsRoute = PointsRouteImport.update({
+  id: '/points',
+  path: '/points',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RequestsRoute = RequestsRouteImport.update({
   id: '/requests',
   path: '/requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplashRoute = SplashRouteImport.update({
+  id: '/splash',
+  path: '/splash',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrackRoute = TrackRouteImport.update({
@@ -75,6 +136,16 @@ const DriverMapRoute = DriverMapRouteImport.update({
   path: '/driver/map',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DriverProfileRoute = DriverProfileRouteImport.update({
+  id: '/driver/profile',
+  path: '/driver/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriverVerifyRoute = DriverVerifyRouteImport.update({
+  id: '/driver/verify',
+  path: '/driver/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MunicipalIndexRoute = MunicipalIndexRouteImport.update({
   id: '/municipal/',
   path: '/municipal/',
@@ -90,9 +161,34 @@ const MunicipalAnalyticsRoute = MunicipalAnalyticsRouteImport.update({
   path: '/municipal/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MunicipalComplaintsRoute = MunicipalComplaintsRouteImport.update({
+  id: '/municipal/complaints',
+  path: '/municipal/complaints',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MunicipalInsightsRoute = MunicipalInsightsRouteImport.update({
+  id: '/municipal/insights',
+  path: '/municipal/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MunicipalManageRoute = MunicipalManageRouteImport.update({
+  id: '/municipal/manage',
+  path: '/municipal/manage',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MunicipalMapRoute = MunicipalMapRouteImport.update({
   id: '/municipal/map',
   path: '/municipal/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MunicipalMonitorRoute = MunicipalMonitorRouteImport.update({
+  id: '/municipal/monitor',
+  path: '/municipal/monitor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MunicipalPointsRoute = MunicipalPointsRouteImport.update({
+  id: '/municipal/points',
+  path: '/municipal/points',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MunicipalRoutesRoute = MunicipalRoutesRouteImport.update({
@@ -103,34 +199,66 @@ const MunicipalRoutesRoute = MunicipalRoutesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/addresses': typeof AddressesRoute
+  '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
   '/impact': typeof ImpactRoute
+  '/language': typeof LanguageRoute
+  '/location': typeof LocationRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
+  '/points': typeof PointsRoute
+  '/profile': typeof ProfileRoute
   '/requests': typeof RequestsRoute
+  '/splash': typeof SplashRoute
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
   '/driver/issues': typeof DriverIssuesRoute
   '/driver/map': typeof DriverMapRoute
+  '/driver/profile': typeof DriverProfileRoute
+  '/driver/verify': typeof DriverVerifyRoute
   '/municipal/alerts': typeof MunicipalAlertsRoute
   '/municipal/analytics': typeof MunicipalAnalyticsRoute
+  '/municipal/complaints': typeof MunicipalComplaintsRoute
+  '/municipal/insights': typeof MunicipalInsightsRoute
+  '/municipal/manage': typeof MunicipalManageRoute
   '/municipal/map': typeof MunicipalMapRoute
+  '/municipal/monitor': typeof MunicipalMonitorRoute
+  '/municipal/points': typeof MunicipalPointsRoute
   '/municipal/routes': typeof MunicipalRoutesRoute
   '/driver/': typeof DriverIndexRoute
   '/municipal/': typeof MunicipalIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/addresses': typeof AddressesRoute
+  '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
   '/impact': typeof ImpactRoute
+  '/language': typeof LanguageRoute
+  '/location': typeof LocationRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
+  '/points': typeof PointsRoute
+  '/profile': typeof ProfileRoute
   '/requests': typeof RequestsRoute
+  '/splash': typeof SplashRoute
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
   '/driver/issues': typeof DriverIssuesRoute
   '/driver/map': typeof DriverMapRoute
+  '/driver/profile': typeof DriverProfileRoute
+  '/driver/verify': typeof DriverVerifyRoute
   '/municipal/alerts': typeof MunicipalAlertsRoute
   '/municipal/analytics': typeof MunicipalAnalyticsRoute
+  '/municipal/complaints': typeof MunicipalComplaintsRoute
+  '/municipal/insights': typeof MunicipalInsightsRoute
+  '/municipal/manage': typeof MunicipalManageRoute
   '/municipal/map': typeof MunicipalMapRoute
+  '/municipal/monitor': typeof MunicipalMonitorRoute
+  '/municipal/points': typeof MunicipalPointsRoute
   '/municipal/routes': typeof MunicipalRoutesRoute
   '/driver': typeof DriverIndexRoute
   '/municipal': typeof MunicipalIndexRoute
@@ -138,17 +266,33 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/addresses': typeof AddressesRoute
+  '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
   '/impact': typeof ImpactRoute
+  '/language': typeof LanguageRoute
+  '/location': typeof LocationRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
+  '/points': typeof PointsRoute
+  '/profile': typeof ProfileRoute
   '/requests': typeof RequestsRoute
+  '/splash': typeof SplashRoute
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
   '/driver/issues': typeof DriverIssuesRoute
   '/driver/map': typeof DriverMapRoute
+  '/driver/profile': typeof DriverProfileRoute
+  '/driver/verify': typeof DriverVerifyRoute
   '/municipal/alerts': typeof MunicipalAlertsRoute
   '/municipal/analytics': typeof MunicipalAnalyticsRoute
+  '/municipal/complaints': typeof MunicipalComplaintsRoute
+  '/municipal/insights': typeof MunicipalInsightsRoute
+  '/municipal/manage': typeof MunicipalManageRoute
   '/municipal/map': typeof MunicipalMapRoute
+  '/municipal/monitor': typeof MunicipalMonitorRoute
+  '/municipal/points': typeof MunicipalPointsRoute
   '/municipal/routes': typeof MunicipalRoutesRoute
   '/driver/': typeof DriverIndexRoute
   '/municipal/': typeof MunicipalIndexRoute
@@ -157,51 +301,99 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/addresses'
+    | '/complaints'
     | '/history'
     | '/impact'
+    | '/language'
+    | '/location'
+    | '/login'
+    | '/notifications'
     | '/onboarding'
+    | '/points'
+    | '/profile'
     | '/requests'
+    | '/splash'
     | '/track'
     | '/driver/history'
     | '/driver/issues'
     | '/driver/map'
+    | '/driver/profile'
+    | '/driver/verify'
     | '/municipal/alerts'
     | '/municipal/analytics'
+    | '/municipal/complaints'
+    | '/municipal/insights'
+    | '/municipal/manage'
     | '/municipal/map'
+    | '/municipal/monitor'
+    | '/municipal/points'
     | '/municipal/routes'
     | '/driver/'
     | '/municipal/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/addresses'
+    | '/complaints'
     | '/history'
     | '/impact'
+    | '/language'
+    | '/location'
+    | '/login'
+    | '/notifications'
     | '/onboarding'
+    | '/points'
+    | '/profile'
     | '/requests'
+    | '/splash'
     | '/track'
     | '/driver/history'
     | '/driver/issues'
     | '/driver/map'
+    | '/driver/profile'
+    | '/driver/verify'
     | '/municipal/alerts'
     | '/municipal/analytics'
+    | '/municipal/complaints'
+    | '/municipal/insights'
+    | '/municipal/manage'
     | '/municipal/map'
+    | '/municipal/monitor'
+    | '/municipal/points'
     | '/municipal/routes'
     | '/driver'
     | '/municipal'
   id:
     | '__root__'
     | '/'
+    | '/addresses'
+    | '/complaints'
     | '/history'
     | '/impact'
+    | '/language'
+    | '/location'
+    | '/login'
+    | '/notifications'
     | '/onboarding'
+    | '/points'
+    | '/profile'
     | '/requests'
+    | '/splash'
     | '/track'
     | '/driver/history'
     | '/driver/issues'
     | '/driver/map'
+    | '/driver/profile'
+    | '/driver/verify'
     | '/municipal/alerts'
     | '/municipal/analytics'
+    | '/municipal/complaints'
+    | '/municipal/insights'
+    | '/municipal/manage'
     | '/municipal/map'
+    | '/municipal/monitor'
+    | '/municipal/points'
     | '/municipal/routes'
     | '/driver/'
     | '/municipal/'
@@ -209,17 +401,33 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AddressesRoute: typeof AddressesRoute
+  ComplaintsRoute: typeof ComplaintsRoute
   HistoryRoute: typeof HistoryRoute
   ImpactRoute: typeof ImpactRoute
+  LanguageRoute: typeof LanguageRoute
+  LocationRoute: typeof LocationRoute
+  LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
   OnboardingRoute: typeof OnboardingRoute
+  PointsRoute: typeof PointsRoute
+  ProfileRoute: typeof ProfileRoute
   RequestsRoute: typeof RequestsRoute
+  SplashRoute: typeof SplashRoute
   TrackRoute: typeof TrackRoute
   DriverHistoryRoute: typeof DriverHistoryRoute
   DriverIssuesRoute: typeof DriverIssuesRoute
   DriverMapRoute: typeof DriverMapRoute
+  DriverProfileRoute: typeof DriverProfileRoute
+  DriverVerifyRoute: typeof DriverVerifyRoute
   MunicipalAlertsRoute: typeof MunicipalAlertsRoute
   MunicipalAnalyticsRoute: typeof MunicipalAnalyticsRoute
+  MunicipalComplaintsRoute: typeof MunicipalComplaintsRoute
+  MunicipalInsightsRoute: typeof MunicipalInsightsRoute
+  MunicipalManageRoute: typeof MunicipalManageRoute
   MunicipalMapRoute: typeof MunicipalMapRoute
+  MunicipalMonitorRoute: typeof MunicipalMonitorRoute
+  MunicipalPointsRoute: typeof MunicipalPointsRoute
   MunicipalRoutesRoute: typeof MunicipalRoutesRoute
   DriverIndexRoute: typeof DriverIndexRoute
   MunicipalIndexRoute: typeof MunicipalIndexRoute
@@ -232,6 +440,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/addresses': {
+      id: '/addresses'
+      path: '/addresses'
+      fullPath: '/addresses'
+      preLoaderRoute: typeof AddressesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/complaints': {
+      id: '/complaints'
+      path: '/complaints'
+      fullPath: '/complaints'
+      preLoaderRoute: typeof ComplaintsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/history': {
@@ -248,6 +470,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/language': {
+      id: '/language'
+      path: '/language'
+      fullPath: '/language'
+      preLoaderRoute: typeof LanguageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/location': {
+      id: '/location'
+      path: '/location'
+      fullPath: '/location'
+      preLoaderRoute: typeof LocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/onboarding': {
       id: '/onboarding'
       path: '/onboarding'
@@ -255,11 +505,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/points': {
+      id: '/points'
+      path: '/points'
+      fullPath: '/points'
+      preLoaderRoute: typeof PointsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/requests': {
       id: '/requests'
       path: '/requests'
       fullPath: '/requests'
       preLoaderRoute: typeof RequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/splash': {
+      id: '/splash'
+      path: '/splash'
+      fullPath: '/splash'
+      preLoaderRoute: typeof SplashRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/track': {
@@ -297,6 +568,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverMapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/driver/profile': {
+      id: '/driver/profile'
+      path: '/driver/profile'
+      fullPath: '/driver/profile'
+      preLoaderRoute: typeof DriverProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/driver/verify': {
+      id: '/driver/verify'
+      path: '/driver/verify'
+      fullPath: '/driver/verify'
+      preLoaderRoute: typeof DriverVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/municipal/': {
       id: '/municipal/'
       path: '/municipal'
@@ -318,11 +603,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MunicipalAnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/municipal/complaints': {
+      id: '/municipal/complaints'
+      path: '/municipal/complaints'
+      fullPath: '/municipal/complaints'
+      preLoaderRoute: typeof MunicipalComplaintsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/municipal/insights': {
+      id: '/municipal/insights'
+      path: '/municipal/insights'
+      fullPath: '/municipal/insights'
+      preLoaderRoute: typeof MunicipalInsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/municipal/manage': {
+      id: '/municipal/manage'
+      path: '/municipal/manage'
+      fullPath: '/municipal/manage'
+      preLoaderRoute: typeof MunicipalManageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/municipal/map': {
       id: '/municipal/map'
       path: '/municipal/map'
       fullPath: '/municipal/map'
       preLoaderRoute: typeof MunicipalMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/municipal/monitor': {
+      id: '/municipal/monitor'
+      path: '/municipal/monitor'
+      fullPath: '/municipal/monitor'
+      preLoaderRoute: typeof MunicipalMonitorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/municipal/points': {
+      id: '/municipal/points'
+      path: '/municipal/points'
+      fullPath: '/municipal/points'
+      preLoaderRoute: typeof MunicipalPointsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/municipal/routes': {
@@ -337,17 +657,33 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AddressesRoute: AddressesRoute,
+  ComplaintsRoute: ComplaintsRoute,
   HistoryRoute: HistoryRoute,
   ImpactRoute: ImpactRoute,
+  LanguageRoute: LanguageRoute,
+  LocationRoute: LocationRoute,
+  LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
   OnboardingRoute: OnboardingRoute,
+  PointsRoute: PointsRoute,
+  ProfileRoute: ProfileRoute,
   RequestsRoute: RequestsRoute,
+  SplashRoute: SplashRoute,
   TrackRoute: TrackRoute,
   DriverHistoryRoute: DriverHistoryRoute,
   DriverIssuesRoute: DriverIssuesRoute,
   DriverMapRoute: DriverMapRoute,
+  DriverProfileRoute: DriverProfileRoute,
+  DriverVerifyRoute: DriverVerifyRoute,
   MunicipalAlertsRoute: MunicipalAlertsRoute,
   MunicipalAnalyticsRoute: MunicipalAnalyticsRoute,
+  MunicipalComplaintsRoute: MunicipalComplaintsRoute,
+  MunicipalInsightsRoute: MunicipalInsightsRoute,
+  MunicipalManageRoute: MunicipalManageRoute,
   MunicipalMapRoute: MunicipalMapRoute,
+  MunicipalMonitorRoute: MunicipalMonitorRoute,
+  MunicipalPointsRoute: MunicipalPointsRoute,
   MunicipalRoutesRoute: MunicipalRoutesRoute,
   DriverIndexRoute: DriverIndexRoute,
   MunicipalIndexRoute: MunicipalIndexRoute,

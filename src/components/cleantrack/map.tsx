@@ -83,6 +83,7 @@ export function CityMap({
   selectedId,
   onSelectVehicle,
   className = "",
+  children,
 }: {
   theme?: "light" | "dark";
   route?: boolean;
@@ -95,6 +96,8 @@ export function CityMap({
   selectedId?: string;
   onSelectVehicle?: (id: string) => void;
   className?: string;
+  /** Extra SVG layers rendered above the base map (e.g. replay paths). */
+  children?: React.ReactNode;
 }) {
   const p = theme === "dark" ? DARK : LIGHT;
   return (
@@ -235,6 +238,8 @@ export function CityMap({
           <path d="M -4 1.5 L 0 -4.5 L 4 1.5 L 0 0 Z" fill={theme === "dark" ? "var(--forest-deep)" : "var(--cream)"} />
         </g>
       )}
+
+      {children}
     </svg>
   );
 }
