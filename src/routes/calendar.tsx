@@ -33,7 +33,7 @@ function CalendarRoute() {
         <h1 className="text-2xl font-extrabold tracking-tight text-forest">Collection Calendar</h1>
       </header>
 
-      <section className="animate-float-in mt-5 overflow-hidden rounded-[2rem] bg-forest p-5 text-ivory shadow-float">
+      <section className="animate-float-in relative mt-5 overflow-hidden rounded-[2rem] bg-forest p-5 text-ivory shadow-float">
         <div aria-hidden className="absolute -right-16 -top-20 size-56 rounded-full bg-emerald/25 blur-2xl" />
         <div className="relative flex items-center gap-3">
           <span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-ivory/10 text-lime ring-1 ring-ivory/15">
