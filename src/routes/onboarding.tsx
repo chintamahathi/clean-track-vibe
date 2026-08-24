@@ -38,7 +38,7 @@ function PhoneFrame({
 }) {
   return (
     <div
-      className={`relative aspect-[9/16] overflow-hidden rounded-[2rem] border border-forest/8 bg-cream shadow-float ${className}`}
+      className={`aspect-[9/16] overflow-hidden rounded-[2rem] border border-forest/8 bg-cream shadow-float ${className}`}
     >
       {children}
       <span className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[linear-gradient(135deg,oklch(1_0_0_/_38%),transparent_38%,transparent_72%,oklch(1_0_0_/_18%))]" />
