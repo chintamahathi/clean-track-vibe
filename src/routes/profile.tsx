@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Bell, ChevronRight, Clock, House, Languages, MessageCircle, Play, Smartphone, Volume2, Zap } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Bell, ChevronRight, Clock, House, Languages, LogOut, MessageCircle, Play, Smartphone, Volume2, Zap } from "lucide-react";
 import { useState } from "react";
 import { RoleSwitcher } from "@/components/cleantrack/shell";
 import { Toggle } from "@/components/cleantrack/toggle";
@@ -52,6 +52,7 @@ const NOTIF_EVENTS = [
 function Profile() {
   const [lang, setLang] = useState("en");
   const [channel, setChannel] = useState("app");
+  const navigate = useNavigate();
 
   return (
     <div className="px-5 pt-6">

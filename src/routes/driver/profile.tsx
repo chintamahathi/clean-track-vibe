@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ChevronRight, Clock, History, MapPin, Truck, Wrench } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { ChevronRight, Clock, History, LogOut, MapPin, Truck, Wrench } from "lucide-react";
 import { RoleSwitcher } from "@/components/cleantrack/shell";
 import { driverProfile } from "@/lib/data";
 
@@ -17,6 +17,7 @@ export const Route = createFileRoute("/driver/profile")({
 
 function DriverProfile() {
   const p = driverProfile;
+  const navigate = useNavigate();
   return (
     <div className="px-5 pt-6">
       {/* identity */}
