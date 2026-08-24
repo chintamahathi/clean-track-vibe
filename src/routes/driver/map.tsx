@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, MapPin, TriangleAlert } from "lucide-react";
 import { CityMap, MapContainer, MapControls, TRUCK_POS } from "@/components/cleantrack/map";
 import { StatusDot } from "@/components/cleantrack/status-pill";
@@ -52,13 +52,13 @@ function DriverRoute() {
           </div>
         </div>
         <div className="mt-4 grid grid-cols-[1fr_auto] gap-2">
-          <button
-            type="button"
+          <Link
+            to="/driver/verify"
             className="flex items-center justify-center gap-2 rounded-2xl bg-emerald py-4 text-sm font-extrabold tracking-[0.05em] text-primary-foreground shadow-lift transition-transform hover:scale-[1.01] active:scale-[0.98]"
           >
             <CheckCircle2 className="size-4" strokeWidth={2.6} />
             MARK COLLECTED
-          </button>
+          </Link>
           <button
             type="button"
             aria-label="Report a problem at this stop"
