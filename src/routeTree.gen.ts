@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AddressesRouteImport } from './routes/addresses'
+import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as ComplaintsRouteImport } from './routes/complaints'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as ImpactRouteImport } from './routes/impact'
@@ -49,6 +50,11 @@ const IndexRoute = IndexRouteImport.update({
 const AddressesRoute = AddressesRouteImport.update({
   id: '/addresses',
   path: '/addresses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComplaintsRoute = ComplaintsRouteImport.update({
@@ -200,6 +206,7 @@ const MunicipalRoutesRoute = MunicipalRoutesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/addresses': typeof AddressesRoute
+  '/calendar': typeof CalendarRoute
   '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
   '/impact': typeof ImpactRoute
@@ -233,6 +240,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/addresses': typeof AddressesRoute
+  '/calendar': typeof CalendarRoute
   '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
   '/impact': typeof ImpactRoute
@@ -267,6 +275,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/addresses': typeof AddressesRoute
+  '/calendar': typeof CalendarRoute
   '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
   '/impact': typeof ImpactRoute
@@ -302,6 +311,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/addresses'
+    | '/calendar'
     | '/complaints'
     | '/history'
     | '/impact'
@@ -335,6 +345,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/addresses'
+    | '/calendar'
     | '/complaints'
     | '/history'
     | '/impact'
@@ -368,6 +379,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/addresses'
+    | '/calendar'
     | '/complaints'
     | '/history'
     | '/impact'
@@ -402,6 +414,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AddressesRoute: typeof AddressesRoute
+  CalendarRoute: typeof CalendarRoute
   ComplaintsRoute: typeof ComplaintsRoute
   HistoryRoute: typeof HistoryRoute
   ImpactRoute: typeof ImpactRoute
@@ -447,6 +460,13 @@ declare module '@tanstack/react-router' {
       path: '/addresses'
       fullPath: '/addresses'
       preLoaderRoute: typeof AddressesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/complaints': {
@@ -658,6 +678,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AddressesRoute: AddressesRoute,
+  CalendarRoute: CalendarRoute,
   ComplaintsRoute: ComplaintsRoute,
   HistoryRoute: HistoryRoute,
   ImpactRoute: ImpactRoute,

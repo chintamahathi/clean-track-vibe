@@ -1,12 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Bell,
+  Calendar,
   ChartLine,
   Home,
   Leaf,
   Map,
   MapPin,
-  Plus,
   Route as RouteIcon,
   ScanLine,
   Settings2,
@@ -25,9 +25,8 @@ const NAVS: Record<Role, NavItem[]> = {
   resident: [
     { to: "/", label: "Home", icon: Home },
     { to: "/track", label: "Track", icon: MapPin },
-    { to: "/requests", label: "Collection", icon: Plus },
+    { to: "/calendar", label: "Calendar", icon: Calendar },
     { to: "/impact", label: "Impact", icon: Leaf },
-    { to: "/profile", label: "Profile", icon: UserRound },
   ],
   driver: [
     { to: "/driver", label: "Today", icon: Sun },
