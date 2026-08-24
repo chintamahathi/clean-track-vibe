@@ -1,5 +1,5 @@
 ﻿import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Outlet, Link, createRootRouteWithContext, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRouteWithContext, redirect, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { AppShell } from "../components/cleantrack/shell";
@@ -39,6 +39,19 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  beforeLoad: ({ location }) => {
+    // Show the ESWACH branding screen on the very first load of any page
+    // (not on direct /brand navigation itself, to avoid a loop).
+    // sessionStorage flag ensures it only shows once per browser session.
+    if (
+      typeof window !== "undefined" &&
+      !window.sessionStorage.getItem("ct_brand_shown") &&
+      location.pathname !== "/brand"
+    ) {
+      window.sessionStorage.setItem("ct_brand_shown", "1");
+      throw redirect({ to: "/brand", replace: true });
+    }
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },

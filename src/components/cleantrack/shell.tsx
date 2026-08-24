@@ -36,7 +36,7 @@ const NAVS: Record<Role, NavItem[]> = {
   ],
 };
 
-const NO_NAV_PREFIXES = ["/onboarding", "/splash", "/language", "/login", "/location", "/role-select"];
+const NO_NAV_PREFIXES = ["/onboarding", "/splash", "/brand", "/language", "/login", "/location", "/role-select"];
 
 function roleFromPath(pathname: string): Role | null {
   if (pathname.startsWith("/driver"))    return "driver";

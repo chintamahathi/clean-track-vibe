@@ -32,16 +32,16 @@ function Splash() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const seen = window.localStorage.getItem("ct_onboarded") === "1";
+    // Navigate to the branding screen after the splash animation completes.
+    // The branding screen handles the final destination (onboarding or home).
     const t = setTimeout(() => {
-      navigate({ to: seen ? "/" : "/onboarding", replace: true });
+      navigate({ to: "/brand", replace: true });
     }, 3600);
     return () => clearTimeout(t);
   }, [navigate]);
 
   const skip = () => {
-    const seen = window.localStorage.getItem("ct_onboarded") === "1";
-    navigate({ to: seen ? "/" : "/onboarding", replace: true });
+    navigate({ to: "/brand", replace: true });
   };
 
   return (

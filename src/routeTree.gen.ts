@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AddressesRouteImport } from './routes/addresses'
 import { Route as BillsRouteImport } from './routes/bills'
+import { Route as BrandRouteImport } from './routes/brand'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as ComplaintsRouteImport } from './routes/complaints'
 import { Route as HistoryRouteImport } from './routes/history'
@@ -58,6 +59,11 @@ const AddressesRoute = AddressesRouteImport.update({
 const BillsRoute = BillsRouteImport.update({
   id: '/bills',
   path: '/bills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrandRoute = BrandRouteImport.update({
+  id: '/brand',
+  path: '/brand',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalendarRoute = CalendarRouteImport.update({
@@ -225,6 +231,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/addresses': typeof AddressesRoute
   '/bills': typeof BillsRoute
+  '/brand': typeof BrandRoute
   '/calendar': typeof CalendarRoute
   '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
@@ -262,6 +269,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/addresses': typeof AddressesRoute
   '/bills': typeof BillsRoute
+  '/brand': typeof BrandRoute
   '/calendar': typeof CalendarRoute
   '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
@@ -300,6 +308,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/addresses': typeof AddressesRoute
   '/bills': typeof BillsRoute
+  '/brand': typeof BrandRoute
   '/calendar': typeof CalendarRoute
   '/complaints': typeof ComplaintsRoute
   '/history': typeof HistoryRoute
@@ -339,6 +348,7 @@ export interface FileRouteTypes {
     | '/'
     | '/addresses'
     | '/bills'
+    | '/brand'
     | '/calendar'
     | '/complaints'
     | '/history'
@@ -376,6 +386,7 @@ export interface FileRouteTypes {
     | '/'
     | '/addresses'
     | '/bills'
+    | '/brand'
     | '/calendar'
     | '/complaints'
     | '/history'
@@ -413,6 +424,7 @@ export interface FileRouteTypes {
     | '/'
     | '/addresses'
     | '/bills'
+    | '/brand'
     | '/calendar'
     | '/complaints'
     | '/history'
@@ -451,6 +463,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AddressesRoute: typeof AddressesRoute
   BillsRoute: typeof BillsRoute
+  BrandRoute: typeof BrandRoute
   CalendarRoute: typeof CalendarRoute
   ComplaintsRoute: typeof ComplaintsRoute
   HistoryRoute: typeof HistoryRoute
@@ -506,6 +519,13 @@ declare module '@tanstack/react-router' {
       path: '/bills'
       fullPath: '/bills'
       preLoaderRoute: typeof BillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brand': {
+      id: '/brand'
+      path: '/brand'
+      fullPath: '/brand'
+      preLoaderRoute: typeof BrandRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calendar': {
@@ -739,6 +759,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AddressesRoute: AddressesRoute,
   BillsRoute: BillsRoute,
+  BrandRoute: BrandRoute,
   CalendarRoute: CalendarRoute,
   ComplaintsRoute: ComplaintsRoute,
   HistoryRoute: HistoryRoute,
