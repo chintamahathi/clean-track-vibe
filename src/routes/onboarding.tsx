@@ -260,19 +260,20 @@ function Onboarding() {
       </div>
 
       {/* three-phone composition */}
-      <div className="relative z-10 mt-5 flex h-[42vh] min-h-[280px] items-center justify-center px-2">
-        <div key={`deck-${index}`} className="animate-float-in relative flex w-full items-center justify-center">
-          <PhoneFrame className="absolute left-1 w-[36%] -translate-y-3 -rotate-[11deg] opacity-70 blur-[0.4px]">
-            <div className="pointer-events-none scale-[0.98] origin-top">{left.screen}</div>
+      <div className="relative z-10 mt-4 h-[44vh] min-h-[300px] px-2">
+        <div key={`deck-${index}`} className="animate-float-in absolute inset-0">
+          <PhoneFrame className="absolute left-[-6%] top-[9%] w-[38%] -rotate-[12deg] opacity-75">
+            <div className="pointer-events-none">{left.screen}</div>
           </PhoneFrame>
-          <PhoneFrame className="absolute right-1 w-[36%] -translate-y-3 rotate-[11deg] opacity-70 blur-[0.4px]">
-            <div className="pointer-events-none scale-[0.98] origin-top">{right.screen}</div>
+          <PhoneFrame className="absolute right-[-6%] top-[9%] w-[38%] rotate-[12deg] opacity-75">
+            <div className="pointer-events-none">{right.screen}</div>
           </PhoneFrame>
-          <PhoneFrame className="relative z-10 w-[47%] shadow-[0_40px_70px_-24px_oklch(0.314_0.061_165.9_/_45%)]">
+          <PhoneFrame className="absolute left-1/2 top-0 z-10 w-[50%] -translate-x-1/2 shadow-[0_44px_72px_-26px_oklch(0.314_0.061_165.9_/_48%)]">
             {page.screen}
           </PhoneFrame>
         </div>
       </div>
+
 
       {/* copy */}
       <div key={`copy-${index}`} className="animate-sheet-up relative z-10 flex flex-1 flex-col px-7 pt-7">
