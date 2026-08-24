@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TrendingUp } from "lucide-react";
+import { useState } from "react";
 import { CountUp } from "@/components/cleantrack/count-up";
-import { analytics } from "@/lib/data";
+import { analytics, analyticsScopes } from "@/lib/data";
 
 export const Route = createFileRoute("/municipal/analytics")({
   head: () => ({
@@ -35,6 +36,7 @@ function smoothPath(values: number[], w: number, h: number, pad = 8) {
 }
 
 function MunicipalAnalytics() {
+  const [scope, setScope] = useState<"colony" | "ward" | "city">("city");
   const W = 340;
   const H = 120;
   const line = smoothPath(analytics.series, W, H);
@@ -44,6 +46,32 @@ function MunicipalAnalytics() {
     <div className="px-5 pt-6">
       <h1 className="text-2xl font-extrabold tracking-tight text-ivory">Analytics</h1>
       <p className="mt-1 text-xs font-medium text-ivory/50">This week across all zones.</p>
+
+      {/* scope tabs */}
+      <div className="mt-4 grid grid-cols-3 gap-1 rounded-full bg-ivory/8 p-1 ring-1 ring-ivory/10">
+        {(["colony", "ward", "city"] as const).map((s) => (
+          <button
+            key={s}
+            type="button"
+            onClick={() => setScope(s)}
+            className={`rounded-full py-2 text-[11px] font-extrabold tracking-wide transition-all ${
+              scope === s ? "bg-lime text-forest-deep shadow-lift" : "text-ivory/55"
+            }`}
+          >
+            {s.toUpperCase()}
+          </button>
+        ))}
+      </div>
+
+      {/* scoped metrics */}
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        {analyticsScopes[scope].map((m) => (
+          <div key={m.label} className="rounded-3xl bg-forest p-4 ring-1 ring-lime/10">
+            <p className="text-2xl font-extrabold tracking-tight text-ivory">{m.value}</p>
+            <p className="mt-1 text-[9px] font-extrabold tracking-[0.12em] text-ivory/50">{m.label}</p>
+          </div>
+        ))}
+      </div>
 
       {/* headline metric + chart */}
       <section className="animate-float-in mt-5 rounded-[2rem] bg-forest p-6 ring-1 ring-lime/10">

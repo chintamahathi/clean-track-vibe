@@ -47,6 +47,7 @@ function Track() {
       const t = setTimeout(() => setPhase("assigned"), 2600);
       return () => clearTimeout(t);
     }
+    return undefined;
   }, [phase]);
 
   const effectiveEta = phase === "assigned" ? backupVehicle.etaMin : eta;
@@ -57,10 +58,11 @@ function Track() {
       {/* map hero */}
       <MapContainer className="animate-float-in mx-4 mt-4 h-[52dvh] min-h-[380px]">
         <CityMap
-          truck={{ x: TRUCK_POS.x, y: TRUCK_POS.y, color: phase === "normal" ? undefined : "var(--coral)" }}
+          truck={{ x: TRUCK_POS.x, y: TRUCK_POS.y, ...(phase === "normal" ? {} : { color: "var(--coral)" }) }}
           home={HOME_POS}
-          vehicles={phase === "found" || phase === "assigned" ? [{ id: backupVehicle.id, x: 128, y: 330, status: "active" }] : undefined}
-          selectedId={backupVehicle.id}
+          {...(phase === "found" || phase === "assigned"
+            ? { vehicles: [{ id: backupVehicle.id, x: 128, y: 330, status: "active" as const }], selectedId: backupVehicle.id }
+            : {})}
         />
         <MapControls />
 
@@ -181,6 +183,40 @@ function Track() {
           <BellRing className="size-4" />
           NOTIFY ME WHEN 3 MIN AWAY
         </button>
+
+        {/* smart ETA */}
+        <div className="mt-3 rounded-2xl bg-pale p-4">
+          <button
+            type="button"
+            onClick={() => setShowEtaWhy((s) => !s)}
+            className="flex w-full items-center gap-2.5 text-left"
+          >
+            <Brain className="size-4 shrink-0 text-emerald" />
+            <span className="flex-1 text-xs font-extrabold tracking-wide text-forest">
+              SMART ETA · {etaPrediction.time} · <span className="text-emerald">CONFIDENCE {etaPrediction.confidence}</span>
+            </span>
+            <ChevronDown className={`size-4 text-forest/40 transition-transform ${showEtaWhy ? "rotate-180" : ""}`} />
+          </button>
+          {showEtaWhy && (
+            <ul className="animate-float-in mt-3 space-y-1.5 border-t border-forest/8 pt-3">
+              {etaPrediction.factors.map((f) => (
+                <li key={f} className="flex items-center gap-2 text-[11px] font-semibold text-muted-foreground">
+                  <span className="size-1.5 rounded-full bg-emerald" /> {f}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {phase === "normal" && (
+          <button
+            type="button"
+            onClick={() => setPhase("breakdown")}
+            className="mt-3 w-full py-1 text-center text-[10px] font-extrabold tracking-[0.14em] text-forest/35"
+          >
+            DEMO · SIMULATE BREAKDOWN
+          </button>
+        )}
       </section>
     </div>
   );

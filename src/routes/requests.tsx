@@ -16,7 +16,9 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
+import { AttachMedia } from "@/components/cleantrack/attach";
 import { CityMap, HOME_POS, MapContainer } from "@/components/cleantrack/map";
+import { StepTimeline } from "@/components/cleantrack/timeline";
 import { missedReasons, resident, timeSlots, wasteTypes } from "@/lib/data";
 
 export const Route = createFileRoute("/requests")({
@@ -79,6 +81,27 @@ function Requests() {
         ))}
       </div>
 
+      {/* request types */}
+      <div className="mt-3 flex flex-wrap gap-2">
+        {(
+          [
+            { id: "missed", label: "🚫 Missed collection", tab: "missed" },
+            { id: "pickup", label: "✨ Special pickup", tab: "pickup" },
+            { id: "bulk", label: "🛋 Bulk waste", tab: "pickup", waste: "bulky" },
+            { id: "garden", label: "🌿 Garden waste", tab: "pickup", waste: "garden" },
+          ] as const
+        ).map((r) => (
+          <button
+            key={r.id}
+            type="button"
+            onClick={() => setTab(r.tab)}
+            className="rounded-full bg-card px-3.5 py-2 text-[11px] font-bold text-forest shadow-card transition-transform hover:scale-105"
+          >
+            {r.label}
+          </button>
+        ))}
+      </div>
+
       {tab === "pickup" ? <PickupForm /> : <MissedForm />}
     </div>
   );
@@ -97,6 +120,16 @@ function PickupForm() {
         <p className="mx-auto mt-2 max-w-[26ch] text-sm text-ivory/65">
           A vehicle will collect your {wasteTypes.find((w) => w.id === waste)?.label.toLowerCase()} waste {slot}.
         </p>
+        <div className="mx-auto mt-6 max-w-60 text-left">
+          <StepTimeline
+            steps={[
+              { label: "Request submitted", time: "Just now", state: "done" },
+              { label: "Vehicle assigned", time: "SAT-220 on the way", state: "done" },
+              { label: "Pickup in progress", time: slot ?? "Today", state: "current" },
+              { label: "Completed", state: "pending" },
+            ]}
+          />
+        </div>
         <button
           type="button"
           onClick={() => setDone(false)}
@@ -252,6 +285,10 @@ function MissedForm() {
           </button>
         );
       })}
+      <div className="pt-1">
+        <p className="mb-2 text-[10px] font-extrabold tracking-[0.16em] text-forest/50">ADD EVIDENCE (OPTIONAL)</p>
+        <AttachMedia />
+      </div>
       <button
         type="button"
         disabled={!reason}

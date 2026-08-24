@@ -1,7 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CheckCircle2, OctagonAlert, Users, Wrench, Truck, type LucideIcon } from "lucide-react";
+import {
+  CheckCircle2,
+  Construction,
+  HelpCircle,
+  House,
+  MapPinOff,
+  OctagonAlert,
+  PackageX,
+  TrafficCone,
+  TriangleAlert,
+  Users,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
 import { useState } from "react";
-import { issueTypes } from "@/lib/data";
+import { driverIssuesV2 } from "@/lib/data";
 
 export const Route = createFileRoute("/driver/issues")({
   head: () => ({
@@ -19,10 +32,15 @@ export const Route = createFileRoute("/driver/issues")({
 });
 
 const ISSUE_ICONS: Record<string, LucideIcon> = {
-  "road-blocked": OctagonAlert,
-  breakdown: Truck,
-  "vehicle-issue": Wrench,
-  "staff-issue": Users,
+  "road-blocked": Construction,
+  traffic: TrafficCone,
+  breakdown: Wrench,
+  "vehicle-full": PackageX,
+  "point-inaccessible": MapPinOff,
+  "household-unavailable": House,
+  "dangerous-road": TriangleAlert,
+  "worker-shortage": Users,
+  other: HelpCircle,
 };
 
 function DriverIssues() {
@@ -61,7 +79,7 @@ function DriverIssues() {
       </p>
 
       <div className="mt-5 grid grid-cols-2 gap-3">
-        {issueTypes.map((issue, i) => {
+        {driverIssuesV2.map((issue, i) => {
           const Icon = ISSUE_ICONS[issue.id] ?? OctagonAlert;
           const active = selected === issue.id;
           return (
@@ -69,7 +87,7 @@ function DriverIssues() {
               key={issue.id}
               type="button"
               onClick={() => setSelected(issue.id)}
-              className={`animate-float-in flex min-h-36 flex-col items-start justify-between rounded-[1.75rem] p-5 text-left transition-all ${
+              className={`animate-float-in flex min-h-32 flex-col items-start justify-between rounded-[1.75rem] p-4 text-left transition-all ${
                 active ? "bg-coral text-primary-foreground shadow-float scale-[1.02]" : "bg-card text-forest shadow-card"
               }`}
               style={{ animationDelay: `${i * 70}ms` }}
@@ -100,7 +118,7 @@ function DriverIssues() {
         onClick={() => setSent(true)}
         className="mt-5 w-full rounded-2xl bg-coral py-4 text-sm font-extrabold tracking-[0.06em] text-primary-foreground shadow-lift transition-all enabled:hover:scale-[1.01] enabled:active:scale-[0.98] disabled:opacity-40"
       >
-        SEND TO CONTROL CENTER
+          SEND TO CONTROL CENTER
       </button>
     </div>
   );

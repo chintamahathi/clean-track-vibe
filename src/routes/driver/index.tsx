@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPin, Navigation, TriangleAlert } from "lucide-react";
+import { CheckCircle2, ChevronRight, MapPin, Navigation, Play, UserRound } from "lucide-react";
 import { CountUp } from "@/components/cleantrack/count-up";
 import { ProgressRing } from "@/components/cleantrack/progress-ring";
 import { driverToday } from "@/lib/data";
@@ -94,13 +94,47 @@ function DriverToday() {
         </Link>
       </section>
 
-      <Link
-        to="/driver/issues"
-        className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-soft py-4 text-sm font-extrabold tracking-[0.06em] text-[oklch(0.55_0.13_70)] ring-1 ring-amber/35 transition-transform hover:scale-[1.01]"
-      >
-        <TriangleAlert className="size-4" />
-        REPORT AN ISSUE
-      </Link>
+      {/* route management */}
+      <section className="mt-4 grid grid-cols-2 gap-3">
+        <button
+          type="button"
+          className="flex items-center justify-center gap-2 rounded-2xl bg-forest py-4 text-xs font-extrabold tracking-[0.06em] text-ivory shadow-lift transition-transform hover:scale-[1.02]"
+        >
+          <Play className="size-4" />
+          START ROUTE
+        </button>
+        <button
+          type="button"
+          className="flex items-center justify-center gap-2 rounded-2xl bg-coral-soft py-4 text-xs font-extrabold tracking-[0.06em] text-coral ring-1 ring-coral/30 transition-transform hover:scale-[1.02]"
+        >
+          <CheckCircle2 className="size-4" />
+          END ROUTE
+        </button>
+      </section>
+
+      <div className="mt-4 space-y-2 pb-4">
+        {(
+          [
+            { to: "/driver/verify", icon: CheckCircle2, label: "Verify a collection", sub: "GPS + QR + waste confirmation" },
+            { to: "/driver/profile", icon: UserRound, label: "Driver profile", sub: "Vehicle, maintenance & colonies" },
+          ] as const
+        ).map((row) => (
+          <Link
+            key={row.to}
+            to={row.to}
+            className="flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card transition-transform hover:scale-[1.01]"
+          >
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-soft text-emerald">
+              <row.icon className="size-5" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-extrabold text-forest">{row.label}</span>
+              <span className="block text-[11px] text-muted-foreground">{row.sub}</span>
+            </span>
+            <ChevronRight className="size-4 shrink-0 text-forest/35" />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

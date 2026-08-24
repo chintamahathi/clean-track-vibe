@@ -1,8 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Brain } from "lucide-react";
 import { CountUp } from "@/components/cleantrack/count-up";
 import { ProgressRing } from "@/components/cleantrack/progress-ring";
-import { alerts, overflowPoint } from "@/lib/data";
+import { alerts, overflowPoint, routeMonitor } from "@/lib/data";
 
 export const Route = createFileRoute("/municipal/alerts")({
   head: () => ({
@@ -51,8 +51,51 @@ function MunicipalAlerts() {
     <div className="px-5 pt-6">
       <h1 className="text-2xl font-extrabold tracking-tight text-ivory">Alerts</h1>
       <p className="mt-1 text-xs font-medium text-ivory/50">
-        {alerts.length} open · prioritized by impact on residents.
+        {alerts.length + 2} open · prioritized by impact on residents.
       </p>
+
+      {/* AI-generated alerts */}
+      <section className="mt-4 space-y-3">
+        <div className="animate-float-in rounded-[1.75rem] bg-amber/12 p-5 ring-1 ring-amber/35">
+          <div className="flex items-center justify-between">
+            <p className="flex items-center gap-1.5 text-[10px] font-extrabold tracking-[0.18em] text-amber">
+              <Brain className="size-3.5" /> SMART DELAY DETECTED
+            </p>
+            <span className="text-[10px] font-semibold text-ivory/40">just now</span>
+          </div>
+          <p className="mt-2 text-lg font-extrabold tracking-tight text-ivory">
+            {routeMonitor.vehicle} · Traffic congestion
+          </p>
+          <p className="mt-0.5 text-xs text-ivory/55">
+            Suggested reroute via <span className="font-bold text-lime">Lane 6 → Main Road</span> · est. +4 min
+          </p>
+          <Link
+            to="/municipal/insights"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-xl bg-amber px-3.5 py-2.5 text-[10px] font-extrabold tracking-[0.08em] text-forest-deep transition-transform hover:scale-105"
+          >
+            APPLY REROUTE <ArrowRight className="size-3" strokeWidth={3} />
+          </Link>
+        </div>
+        <div className="animate-float-in rounded-[1.75rem] bg-cyan/10 p-5 ring-1 ring-cyan/30" style={{ animationDelay: "60ms" }}>
+          <div className="flex items-center justify-between">
+            <p className="flex items-center gap-1.5 text-[10px] font-extrabold tracking-[0.18em] text-cyan">
+              <Brain className="size-3.5" /> PREDICTED DELAY
+            </p>
+            <span className="text-[10px] font-semibold text-ivory/40">forecast</span>
+          </div>
+          <p className="mt-2 text-lg font-extrabold tracking-tight text-ivory">Madhapur Route · {routeMonitor.vehicle}</p>
+          <p className="mt-0.5 text-xs text-ivory/55">
+            15 min delay likely due to traffic + high waste volume · probability{" "}
+            <span className="font-bold text-cyan">78%</span>
+          </p>
+          <Link
+            to="/municipal/monitor"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-xl bg-cyan px-3.5 py-2.5 text-[10px] font-extrabold tracking-[0.08em] text-forest-deep transition-transform hover:scale-105"
+          >
+            OPEN ROUTE MONITOR <ArrowRight className="size-3" strokeWidth={3} />
+          </Link>
+        </div>
+      </section>
 
       {/* overflow visualization */}
       <section className="animate-float-in mt-5 flex items-center gap-6 rounded-[2rem] bg-forest p-6 ring-1 ring-coral/25">
@@ -73,6 +116,9 @@ function MunicipalAlerts() {
           <p className="text-xs text-ivory/55">{overflowPoint.area}</p>
           <p className="mt-2 text-sm font-extrabold text-ivory">
             {overflowPoint.currentKg} <span className="font-medium text-ivory/45">/ {overflowPoint.capacityKg} KG</span>
+          </p>
+          <p className="mt-1 text-[11px] font-bold text-amber">
+            🧠 Prediction: overflow in 26 min · +2.1 kg/min
           </p>
           <button
             type="button"
