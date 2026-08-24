@@ -86,7 +86,7 @@ function DriverToday() {
           </div>
         </div>
         <Link
-          to="/driver/route"
+          to="/driver/map"
           className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald py-4 text-sm font-extrabold tracking-[0.06em] text-primary-foreground shadow-lift transition-transform hover:scale-[1.01] active:scale-[0.98]"
         >
           <Navigation className="size-4" strokeWidth={2.6} />

@@ -29,7 +29,7 @@ const NAVS: Record<Role, NavItem[]> = {
   ],
   driver: [
     { to: "/driver", label: "Today", icon: Sun },
-    { to: "/driver/route", label: "Route", icon: RouteIcon },
+    { to: "/driver/map", label: "Route", icon: RouteIcon },
     { to: "/driver/issues", label: "Issues", icon: TriangleAlert },
     { to: "/driver/history", label: "History", icon: Clock },
   ],
