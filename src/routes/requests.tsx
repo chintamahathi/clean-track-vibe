@@ -127,7 +127,7 @@ function PickupForm() {
               { label: "Request submitted", time: "Just now", state: "done" },
               { label: "Vehicle assigned", time: "SAT-220 on the way", state: "done" },
               { label: "Pickup in progress", time: slot ?? "Today", state: "current" },
-              { label: "Completed", state: "todo" },
+              { label: "Completed", state: "pending" },
             ]}
           />
         </div>

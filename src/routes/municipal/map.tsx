@@ -77,12 +77,14 @@ function MunicipalMap() {
           </div>
           {/* vehicle details */}
           <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-ivory/10 pt-4">
-            {[
-              ["Capacity", selected.status === "unavailable" ? "—" : "74%"],
-              ["Stops left", String(Math.round((56 * (100 - selected.progress)) / 100))],
-              ["Fuel", selected.status === "unavailable" ? "—" : "68%"],
-              ["Shift ends", "9:30 PM"],
-            ].map(([k, v]) => (
+            {(
+              [
+                ["Capacity", selected.status === "unavailable" ? "—" : "74%"],
+                ["Stops left", String(Math.round((56 * (100 - selected.progress)) / 100))],
+                ["Fuel", selected.status === "unavailable" ? "—" : "68%"],
+                ["Shift ends", "9:30 PM"],
+              ] as [string, string][]
+            ).map(([k, v]) => (
               <div key={k} className="flex items-baseline justify-between gap-2">
                 <dt className="text-[10px] font-extrabold tracking-[0.12em] text-ivory/40">{k.toUpperCase()}</dt>
                 <dd className="text-sm font-extrabold text-ivory">{v}</dd>
