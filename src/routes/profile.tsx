@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Bell, ChevronRight, Clock, House, Languages, MessageCircle, Play, Smartphone, Volume2, Zap } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Bell, ChevronRight, Clock, House, Languages, LogOut, MessageCircle, Play, Smartphone, Volume2, Zap } from "lucide-react";
 import { useState } from "react";
 import { RoleSwitcher } from "@/components/cleantrack/shell";
 import { Toggle } from "@/components/cleantrack/toggle";
@@ -52,6 +52,7 @@ const NOTIF_EVENTS = [
 function Profile() {
   const [lang, setLang] = useState("en");
   const [channel, setChannel] = useState("app");
+  const navigate = useNavigate();
 
   return (
     <div className="px-5 pt-6">
@@ -161,6 +162,17 @@ function Profile() {
       >
         <Play className="size-4" /> REPLAY INTRO
       </Link>
+
+      <button
+        type="button"
+        onClick={() => {
+          window.localStorage.removeItem("ct_onboarded");
+          navigate({ to: "/role-select" });
+        }}
+        className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-card py-4 text-xs font-extrabold tracking-[0.08em] text-destructive shadow-card ring-1 ring-destructive/20 transition-all hover:scale-[1.01] active:scale-[0.98]"
+      >
+        <LogOut className="size-4" /> LOG OUT
+      </button>
 
       <div className="mt-6 flex justify-center pb-2">
         <RoleSwitcher />

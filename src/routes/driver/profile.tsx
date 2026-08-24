@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ChevronRight, Clock, History, MapPin, Truck, Wrench } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { ChevronRight, Clock, History, LogOut, MapPin, Truck, Wrench } from "lucide-react";
 import { RoleSwitcher } from "@/components/cleantrack/shell";
 import { driverProfile } from "@/lib/data";
 
@@ -17,6 +17,7 @@ export const Route = createFileRoute("/driver/profile")({
 
 function DriverProfile() {
   const p = driverProfile;
+  const navigate = useNavigate();
   return (
     <div className="px-5 pt-6">
       {/* identity */}
@@ -93,6 +94,17 @@ function DriverProfile() {
         </span>
         <ChevronRight className="size-4 text-forest/40" />
       </Link>
+
+      <button
+        type="button"
+        onClick={() => {
+          window.localStorage.removeItem("ct_onboarded");
+          navigate({ to: "/role-select" });
+        }}
+        className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-card py-4 text-xs font-extrabold tracking-[0.08em] text-destructive shadow-card ring-1 ring-destructive/20 transition-all hover:scale-[1.01] active:scale-[0.98]"
+      >
+        <LogOut className="size-4" /> LOG OUT
+      </button>
 
       <div className="mt-6 flex justify-center pb-2">
         <RoleSwitcher />

@@ -23,6 +23,7 @@ import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PointsRouteImport } from './routes/points'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RequestsRouteImport } from './routes/requests'
+import { Route as RoleSelectRouteImport } from './routes/role-select'
 import { Route as SplashRouteImport } from './routes/splash'
 import { Route as TrackRouteImport } from './routes/track'
 import { Route as DriverIndexRouteImport } from './routes/driver/index'
@@ -110,6 +111,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const RequestsRoute = RequestsRouteImport.update({
   id: '/requests',
   path: '/requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoleSelectRoute = RoleSelectRouteImport.update({
+  id: '/role-select',
+  path: '/role-select',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplashRoute = SplashRouteImport.update({
@@ -218,6 +224,7 @@ export interface FileRoutesByFullPath {
   '/points': typeof PointsRoute
   '/profile': typeof ProfileRoute
   '/requests': typeof RequestsRoute
+  '/role-select': typeof RoleSelectRoute
   '/splash': typeof SplashRoute
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
@@ -252,6 +259,7 @@ export interface FileRoutesByTo {
   '/points': typeof PointsRoute
   '/profile': typeof ProfileRoute
   '/requests': typeof RequestsRoute
+  '/role-select': typeof RoleSelectRoute
   '/splash': typeof SplashRoute
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
@@ -287,6 +295,7 @@ export interface FileRoutesById {
   '/points': typeof PointsRoute
   '/profile': typeof ProfileRoute
   '/requests': typeof RequestsRoute
+  '/role-select': typeof RoleSelectRoute
   '/splash': typeof SplashRoute
   '/track': typeof TrackRoute
   '/driver/history': typeof DriverHistoryRoute
@@ -323,6 +332,7 @@ export interface FileRouteTypes {
     | '/points'
     | '/profile'
     | '/requests'
+    | '/role-select'
     | '/splash'
     | '/track'
     | '/driver/history'
@@ -357,6 +367,7 @@ export interface FileRouteTypes {
     | '/points'
     | '/profile'
     | '/requests'
+    | '/role-select'
     | '/splash'
     | '/track'
     | '/driver/history'
@@ -391,6 +402,7 @@ export interface FileRouteTypes {
     | '/points'
     | '/profile'
     | '/requests'
+    | '/role-select'
     | '/splash'
     | '/track'
     | '/driver/history'
@@ -426,6 +438,7 @@ export interface RootRouteChildren {
   PointsRoute: typeof PointsRoute
   ProfileRoute: typeof ProfileRoute
   RequestsRoute: typeof RequestsRoute
+  RoleSelectRoute: typeof RoleSelectRoute
   SplashRoute: typeof SplashRoute
   TrackRoute: typeof TrackRoute
   DriverHistoryRoute: typeof DriverHistoryRoute
@@ -544,6 +557,13 @@ declare module '@tanstack/react-router' {
       path: '/requests'
       fullPath: '/requests'
       preLoaderRoute: typeof RequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/role-select': {
+      id: '/role-select'
+      path: '/role-select'
+      fullPath: '/role-select'
+      preLoaderRoute: typeof RoleSelectRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/splash': {
@@ -690,6 +710,7 @@ const rootRouteChildren: RootRouteChildren = {
   PointsRoute: PointsRoute,
   ProfileRoute: ProfileRoute,
   RequestsRoute: RequestsRoute,
+  RoleSelectRoute: RoleSelectRoute,
   SplashRoute: SplashRoute,
   TrackRoute: TrackRoute,
   DriverHistoryRoute: DriverHistoryRoute,
