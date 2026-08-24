@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect, type ReactNode } from "react";
 import { hasUnreadCalendar, onCalendarUnreadChange } from "@/lib/calendarUnread";
+import { applyTheme, onThemeChange } from "@/lib/theme";
 
 type Role = "resident" | "driver" | "municipal";
 type NavItem = { to: string; label: string; icon: LucideIcon };
@@ -54,6 +55,12 @@ export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const role = roleFromPath(pathname);
   const dark = role === "municipal";
+
+  // Keep dark class in sync with user preference
+  useEffect(() => {
+    applyTheme();
+    return onThemeChange(() => applyTheme());
+  }, []);
 
   return (
     <div className="min-h-dvh w-full md:flex md:items-center md:justify-center md:bg-forest-deep md:bg-[radial-gradient(1200px_800px_at_20%_-10%,oklch(0.4_0.07_160_/_45%),transparent),radial-gradient(900px_700px_at_110%_110%,oklch(0.65_0.146_158.1_/_22%),transparent)] md:py-8">

@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Accessibility, Bell, ChevronRight, Globe, Info, Lock, MapPin, Recycle, ShieldCheck, Smartphone, Volume2, Zap } from "lucide-react";
-import { useState } from "react";
+import { Accessibility, Bell, ChevronRight, Globe, Info, Lock, MapPin, Moon, Recycle, ShieldCheck, Smartphone, Sun, SunMoon, Volume2, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
 import { SubHeader } from "@/components/cleantrack/sub-header";
 import { Toggle } from "@/components/cleantrack/toggle";
+import { getThemeMode, onThemeChange, setThemeMode, type ThemeMode } from "@/lib/theme";
 import { languages } from "@/lib/data";
 
 export const Route = createFileRoute("/settings")({
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/settings")({
   component: Settings,
 });
 
-type Section = "main" | "language" | "notifications" | "privacy" | "location" | "pickup" | "lowdata" | "accessibility" | "about";
+type Section = "main" | "language" | "notifications" | "privacy" | "location" | "pickup" | "lowdata" | "accessibility" | "about" | "appearance";
 
 function SettingRow({ icon, label, hint, onClick }: { icon: React.ReactNode; label: string; hint?: string; onClick: () => void }) {
   return (
@@ -40,6 +41,31 @@ function ToggleRow({ icon, label, hint, defaultOn = false }: { icon: React.React
         {hint && <p className="text-[11px] text-muted-foreground">{hint}</p>}
       </div>
       <Toggle checked={on} onChange={setOn} label={label} />
+    </div>
+  );
+}
+
+function AppearanceSection({ onBack }: { onBack: () => void }) {
+  const [mode, setMode] = useState<ThemeMode>(getThemeMode);
+  useEffect(() => onThemeChange(() => setMode(getThemeMode())), []);
+  const opts: { id: ThemeMode; label: string; Icon: typeof Sun }[] = [
+    { id: "light",  label: "Light",  Icon: Sun     },
+    { id: "dark",   label: "Dark",   Icon: Moon    },
+    { id: "system", label: "System", Icon: SunMoon },
+  ];
+  return (
+    <div className="px-5 pt-6">
+      <SubHeader title="Appearance" onBack={onBack} />
+      <div className="mt-5 rounded-[2rem] bg-card p-5 shadow-card space-y-1">
+        {opts.map(({ id, label, Icon }) => (
+          <button key={id} type="button" onClick={() => { setMode(id); setThemeMode(id); }}
+            className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3.5 text-sm font-extrabold transition-all ${mode === id ? "bg-forest text-ivory shadow-lift" : "text-forest hover:bg-pale"}`}>
+            <Icon className="size-4 shrink-0" />
+            <span className="flex-1 text-left">{label}</span>
+            {mode === id && <span className="text-lime">✓</span>}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
@@ -240,6 +266,7 @@ function AboutSection({ onBack }: { onBack: () => void }) {
 function Settings() {
   const [section, setSection] = useState<Section>("main");
   const back = () => setSection("main");
+  if (section === "appearance")    return <AppearanceSection onBack={back} />;
   if (section === "language")      return <LanguageSection onBack={back} />;
   if (section === "notifications") return <NotificationsSection onBack={back} />;
   if (section === "privacy")       return <PrivacySection onBack={back} />;
@@ -252,6 +279,8 @@ function Settings() {
     <div className="px-5 pt-6">
       <SubHeader title="Settings" />
       <div className="mt-5 rounded-[2rem] bg-card p-5 shadow-card">
+        <SettingRow icon={<SunMoon className="size-4" />}       label="Appearance"         hint="Light · Dark · System"               onClick={() => setSection("appearance")} />
+        <div className="h-px bg-forest/6 mx-1" />
         <SettingRow icon={<Globe className="size-4" />}         label="Language"           hint="English · తెలుగు · हिन्दी"          onClick={() => setSection("language")} />
         <div className="h-px bg-forest/6 mx-1" />
         <SettingRow icon={<Bell className="size-4" />}          label="Notifications"      hint="Alerts, delays, missed collections"  onClick={() => setSection("notifications")} />

@@ -227,6 +227,53 @@
   }
 }
 
+/* ── Dark theme ───────────────────────────────────────────────────────────────
+ * Applied when <html class="dark"> is set by theme.ts.
+ * Premium deep-forest palette — not a color inversion.
+ */
+.dark {
+  --background:         oklch(0.13 0.04 168);
+  --foreground:         oklch(0.95 0.012 145);
+  --card:               oklch(0.18 0.045 167);
+  --card-foreground:    oklch(0.95 0.012 145);
+  --popover:            oklch(0.18 0.045 167);
+  --popover-foreground: oklch(0.95 0.012 145);
+  --primary:            oklch(0.72 0.16 158);
+  --primary-foreground: oklch(0.15 0.04 168);
+  --secondary:          oklch(0.22 0.05 167);
+  --secondary-foreground: oklch(0.88 0.025 152);
+  --muted:              oklch(0.22 0.05 167);
+  --muted-foreground:   oklch(0.68 0.04 162);
+  --accent:             oklch(0.22 0.05 167);
+  --accent-foreground:  oklch(0.88 0.025 152);
+  --destructive:        oklch(0.65 0.19 22);
+  --destructive-foreground: oklch(0.98 0.01 90);
+  --border:             oklch(0.26 0.05 166);
+  --input:              oklch(0.26 0.05 166);
+  --ring:               oklch(0.72 0.16 158);
+  --forest:             oklch(0.85 0.14 125);
+  --forest-deep:        oklch(0.13 0.04 168);
+  --forest-soft:        oklch(0.3 0.06 166);
+  --emerald:            oklch(0.72 0.16 158);
+  --emerald-soft:       oklch(0.22 0.07 158);
+  --lime:               oklch(0.85 0.14 125);
+  --cyan:               oklch(0.78 0.13 189);
+  --ivory:              oklch(0.95 0.012 145);
+  --cream:              oklch(0.95 0.012 145);
+  --pale:               oklch(0.22 0.05 167);
+  --amber:              oklch(0.82 0.15 80);
+  --amber-soft:         oklch(0.24 0.06 80);
+  --coral:              oklch(0.65 0.19 22);
+  --coral-soft:         oklch(0.22 0.06 22);
+  --shadow-card:  0 2px 6px -2px oklch(0.05 0.02 168 / 30%), 0 12px 32px -12px oklch(0.05 0.02 168 / 45%);
+  --shadow-float: 0 4px 12px -4px oklch(0.05 0.02 168 / 40%), 0 24px 48px -16px oklch(0.05 0.02 168 / 55%);
+  --shadow-lift:  0 8px 24px -8px oklch(0.05 0.02 168 / 50%);
+}
+.dark .glass-panel {
+  background: color-mix(in oklab, oklch(0.18 0.045 167) 84%, transparent);
+  border-color: color-mix(in oklab, oklch(0.72 0.16 158) 12%, transparent);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

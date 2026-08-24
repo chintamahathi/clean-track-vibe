@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, ChevronRight, MapPin, Navigation, Play, UserRound } from "lucide-react";
-import { CountUp } from "@/components/cleantrack/count-up";
-import { ProgressRing } from "@/components/cleantrack/progress-ring";
+import { useEffect, useState } from "react";
+import { getArea, onAreaChange } from "@/lib/driverArea";
 import { driverToday } from "@/lib/data";
 
 export const Route = createFileRoute("/driver/")({
@@ -10,16 +10,17 @@ export const Route = createFileRoute("/driver/")({
       { title: "Today's route — CleanTrack Driver" },
       {
         name: "description",
-        content: "Your route at a glance: progress, households collected and your next stop — built for the road.",
+        content: "Your route at a glance: stops remaining, next stop — built for the road.",
       },
-      { property: "og:title", content: "Today's route — CleanTrack Driver" },
-      { property: "og:description", content: "Route progress, households and next stop for collection drivers." },
     ],
   }),
   component: DriverToday,
 });
 
 function DriverToday() {
+  const [area, setArea] = useState(getArea);
+  useEffect(() => onAreaChange(() => setArea(getArea())), []);
+
   return (
     <div className="px-5 pt-6">
       <header className="flex items-center justify-between">
@@ -27,30 +28,29 @@ function DriverToday() {
           <p className="text-xs font-medium text-muted-foreground">Good evening,</p>
           <h1 className="text-xl font-extrabold tracking-tight text-forest">{driverToday.name}</h1>
         </div>
-        <span className="rounded-full bg-forest px-3.5 py-2 text-[11px] font-extrabold tracking-wider text-lime">
-          {driverToday.vehicle}
-        </span>
+        {/* Area badge — replaces vehicle ID as primary identity */}
+        <div className="flex flex-col items-end gap-0.5">
+          <span className="rounded-full bg-forest px-3.5 py-2 text-[11px] font-extrabold tracking-wider text-lime">
+            {area.id}
+          </span>
+          <span className="pr-1 text-[9px] font-bold uppercase tracking-wide text-muted-foreground">
+            {area.name}
+          </span>
+        </div>
       </header>
 
-      {/* route progress hero */}
+      {/* route progress hero — STOPS REMAINING replaces % ring */}
       <section className="animate-float-in mt-5 rounded-[2rem] bg-forest p-7 text-center text-ivory shadow-float">
         <p className="text-[10px] font-extrabold tracking-[0.2em] text-lime">TODAY'S ROUTE</p>
-        <h2 className="mt-1 text-sm font-bold text-ivory/80">{driverToday.route}</h2>
-        <div className="mt-5 flex justify-center">
-          <ProgressRing
-            value={driverToday.progress}
-            size={190}
-            stroke={16}
-            color="var(--lime)"
-            track="color-mix(in oklab, var(--ivory) 12%, transparent)"
-          >
-            <p className="text-[3.4rem] font-extrabold leading-none tracking-tight text-ivory">
-              <CountUp to={driverToday.progress} />
-              <span className="text-2xl text-lime">%</span>
-            </p>
-            <p className="mt-1 text-[9px] font-extrabold tracking-[0.18em] text-ivory/55">COMPLETE</p>
-          </ProgressRing>
+        <h2 className="mt-1 text-sm font-bold text-ivory/80">{area.id} — {area.name}</h2>
+
+        <div className="mt-5">
+          <p className="text-[3.4rem] font-extrabold leading-none tracking-tight text-ivory">
+            {driverToday.remaining}
+          </p>
+          <p className="mt-2 text-[10px] font-extrabold tracking-[0.2em] text-lime">STOPS REMAINING</p>
         </div>
+
         <div className="mt-6 grid grid-cols-3 divide-x divide-ivory/12">
           <div>
             <p className="text-2xl font-extrabold tracking-tight text-ivory">{driverToday.households}</p>

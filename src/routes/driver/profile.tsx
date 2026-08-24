@@ -1,6 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ChevronRight, Clock, History, LogOut, MapPin, Truck, Wrench } from "lucide-react";
+import { Check, ChevronRight, Clock, History, LogOut, MapPin, Truck, Wrench, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { RoleSwitcher } from "@/components/cleantrack/shell";
+import { DRIVER_AREAS, getArea, onAreaChange, setArea } from "@/lib/driverArea";
 import { driverProfile } from "@/lib/data";
 
 export const Route = createFileRoute("/driver/profile")({
@@ -18,6 +20,18 @@ export const Route = createFileRoute("/driver/profile")({
 function DriverProfile() {
   const p = driverProfile;
   const navigate = useNavigate();
+  const [area, setAreaState] = useState(getArea);
+  const [showPicker, setShowPicker] = useState(false);
+  const [pending, setPending] = useState(area.id);
+
+  useEffect(() => onAreaChange(() => setAreaState(getArea())), []);
+
+  function confirmArea() {
+    setArea(pending);
+    setAreaState(getArea());
+    setShowPicker(false);
+  }
+
   return (
     <div className="px-5 pt-6">
       {/* identity */}
@@ -32,6 +46,53 @@ function DriverProfile() {
           </p>
         </div>
       </header>
+
+      {/* current area */}
+      <section className="animate-float-in mt-5 rounded-[2rem] bg-card p-5 shadow-card">
+        <div className="flex items-center justify-between">
+          <p className="text-[10px] font-extrabold tracking-[0.18em] text-forest/50">CURRENT AREA</p>
+          <button
+            type="button"
+            onClick={() => { setPending(area.id); setShowPicker((s) => !s); }}
+            className="rounded-full bg-forest px-3 py-1.5 text-[10px] font-extrabold tracking-wide text-lime transition-transform hover:scale-105"
+          >
+            CHANGE AREA
+          </button>
+        </div>
+        <p className="mt-2 text-2xl font-extrabold tracking-tight text-forest">{area.id}</p>
+        <p className="text-sm font-bold text-muted-foreground">{area.name} · {area.ward}</p>
+
+        {/* inline area picker */}
+        {showPicker && (
+          <div className="animate-float-in mt-4 space-y-1.5 border-t border-forest/8 pt-4">
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-[10px] font-extrabold tracking-[0.14em] text-forest/50">SELECT AREA</p>
+              <button type="button" onClick={() => setShowPicker(false)} className="text-muted-foreground"><X className="size-4" /></button>
+            </div>
+            {DRIVER_AREAS.map((a) => (
+              <button
+                key={a.id}
+                type="button"
+                onClick={() => setPending(a.id)}
+                className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm transition-all ${
+                  pending === a.id ? "bg-forest text-ivory shadow-lift" : "bg-pale text-forest hover:bg-secondary"
+                }`}
+              >
+                <span className="font-extrabold">{a.id} — {a.name}</span>
+                {pending === a.id && <Check className="size-4 text-lime" strokeWidth={3} />}
+              </button>
+            ))}
+            <button
+              type="button"
+              disabled={pending === area.id}
+              onClick={confirmArea}
+              className="mt-2 w-full rounded-2xl bg-emerald py-3 text-xs font-extrabold tracking-[0.06em] text-primary-foreground shadow-lift transition-all disabled:opacity-40 enabled:hover:scale-[1.01]"
+            >
+              CONFIRM AREA
+            </button>
+          </div>
+        )}
+      </section>
 
       {/* vehicle */}
       <section className="animate-float-in mt-5 rounded-[2rem] bg-forest p-6 text-ivory shadow-float">

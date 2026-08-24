@@ -5,8 +5,7 @@ import truckImg from "@/assets/truck.png";
 import { CountUp } from "@/components/cleantrack/count-up";
 import { ProfileMenu } from "@/components/cleantrack/shell";
 import { StatusPill } from "@/components/cleantrack/status-pill";
-import { WetDryStatus } from "@/components/cleantrack/waste-status";
-import { collectionSchedule, resident, truck, wetDryToday } from "@/lib/data";
+import { collectionSchedule, resident, truck } from "@/lib/data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -91,9 +90,6 @@ function Index() {
         </Link>
       </div>
 
-      <div className="animate-float-in mt-4" style={{ animationDelay: "180ms" }}>
-        <WetDryStatus wet={wetDryToday.wet} dry={wetDryToday.dry} />
-      </div>
 
       <ScheduleCard />
 
