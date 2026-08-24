@@ -47,6 +47,7 @@ function Track() {
       const t = setTimeout(() => setPhase("assigned"), 2600);
       return () => clearTimeout(t);
     }
+    return undefined;
   }, [phase]);
 
   const effectiveEta = phase === "assigned" ? backupVehicle.etaMin : eta;
@@ -57,7 +58,7 @@ function Track() {
       {/* map hero */}
       <MapContainer className="animate-float-in mx-4 mt-4 h-[52dvh] min-h-[380px]">
         <CityMap
-          truck={{ x: TRUCK_POS.x, y: TRUCK_POS.y, color: phase === "normal" ? undefined : "var(--coral)" }}
+          truck={{ x: TRUCK_POS.x, y: TRUCK_POS.y, ...(phase === "normal" ? {} : { color: "var(--coral)" }) }}
           home={HOME_POS}
           vehicles={phase === "found" || phase === "assigned" ? [{ id: backupVehicle.id, x: 128, y: 330, status: "active" }] : undefined}
           selectedId={backupVehicle.id}
