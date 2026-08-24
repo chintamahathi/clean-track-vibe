@@ -162,6 +162,17 @@ function Profile() {
         <Play className="size-4" /> REPLAY INTRO
       </Link>
 
+      <button
+        type="button"
+        onClick={() => {
+          window.localStorage.removeItem("ct_onboarded");
+          navigate({ to: "/role-select" });
+        }}
+        className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-card py-4 text-xs font-extrabold tracking-[0.08em] text-destructive shadow-card ring-1 ring-destructive/20 transition-all hover:scale-[1.01] active:scale-[0.98]"
+      >
+        <LogOut className="size-4" /> LOG OUT
+      </button>
+
       <div className="mt-6 flex justify-center pb-2">
         <RoleSwitcher />
       </div>
